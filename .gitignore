@@ -20,4 +20,3 @@ test_tsan
 # OS files
 .DS_Store
 Thumbs.db
-
