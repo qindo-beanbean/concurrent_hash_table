@@ -1,0 +1,23 @@
+# Compiled binaries
+test
+benchmark
+test_tsan
+
+# Object files
+*.o
+
+# Build artifacts
+*.out
+*.exe
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
