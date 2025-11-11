@@ -45,13 +45,13 @@ void testConcurrent(const string& name, int num_threads) {
          << " (" << num_threads << " threads) ===" << endl;
     
     HashTable ht(1024);
-    const int ITEMS_PER_THREAD = 1000;
+    const size_t ITEMS_PER_THREAD = 1000;
     
     // Concurrent insert
     #pragma omp parallel num_threads(num_threads)
     {
         int tid = omp_get_thread_num();
-        for (int i = 0; i < ITEMS_PER_THREAD; i++) {
+        for (size_t i = 0; i < ITEMS_PER_THREAD; i++) {
             int key = tid * ITEMS_PER_THREAD + i;
             ht.insert(key, key * 10);
         }
@@ -66,7 +66,7 @@ void testConcurrent(const string& name, int num_threads) {
     {
         int tid = omp_get_thread_num();
         int value;
-        for (int i = 0; i < ITEMS_PER_THREAD; i++) {
+        for (size_t i = 0; i < ITEMS_PER_THREAD; i++) {
             int key = tid * ITEMS_PER_THREAD + i;
             if (!ht.search(key, value) || value != key * 10) {
                 failed_searches++;

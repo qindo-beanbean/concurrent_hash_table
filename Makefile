@@ -6,7 +6,7 @@ CXXFLAGS = -std=c++17 -fopenmp -O3 -Wall -Wextra
 SANITIZE = -fsanitize=thread -g
 
 # Target files
-TARGETS = test benchmark test_tsan
+TARGETS = test benchmark 
 
 all: $(TARGETS)
 
