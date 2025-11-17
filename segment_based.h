@@ -58,12 +58,14 @@ public:
     }
     
     bool insert(const K& key, const V& value) {
-        size_t seg_idx = getSegmentIndex(key);
+        // Compute hash once and reuse
+        size_t hash_val = Hash<K>{}(key);
+        size_t seg_idx = hash_val % NUM_SEGMENTS;
         Segment* seg = segments[seg_idx];
         
         omp_set_lock(&seg->lock);  // Lock only the corresponding segment
         
-        size_t bucket_idx = getBucketIndex(key, seg->buckets_per_segment);
+        size_t bucket_idx = hash_val % seg->buckets_per_segment;
         auto& bucket = seg->buckets[bucket_idx];
         
         // Check if key already exists
@@ -83,12 +85,14 @@ public:
     }
     
     bool search(const K& key, V& value) const {
-        size_t seg_idx = getSegmentIndex(key);
+        // Compute hash once and reuse
+        size_t hash_val = Hash<K>{}(key);
+        size_t seg_idx = hash_val % NUM_SEGMENTS;
         Segment* seg = segments[seg_idx];
         
         omp_set_lock(&seg->lock);
         
-        size_t bucket_idx = getBucketIndex(key, seg->buckets_per_segment);
+        size_t bucket_idx = hash_val % seg->buckets_per_segment;
         const auto& bucket = seg->buckets[bucket_idx];
         
         for (const auto& kv : bucket) {
@@ -104,12 +108,14 @@ public:
     }
     
     bool remove(const K& key) {
-        size_t seg_idx = getSegmentIndex(key);
+        // Compute hash once and reuse
+        size_t hash_val = Hash<K>{}(key);
+        size_t seg_idx = hash_val % NUM_SEGMENTS;
         Segment* seg = segments[seg_idx];
         
         omp_set_lock(&seg->lock);
         
-        size_t bucket_idx = getBucketIndex(key, seg->buckets_per_segment);
+        size_t bucket_idx = hash_val % seg->buckets_per_segment;
         auto& bucket = seg->buckets[bucket_idx];
         
         for (auto it = bucket.begin(); it != bucket.end(); ++it) {
