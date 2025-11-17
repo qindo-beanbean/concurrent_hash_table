@@ -10,7 +10,7 @@
 #include "fine_grained.h"
 #include "lock_free.h"
 
-#define OPERATIONS 20000000
+#define OPERATIONS 2000000  // Reduced from 20M to 2M for faster testing
 
 
 using namespace std;
@@ -67,7 +67,7 @@ void runParallelBenchmark(const string& name, double baseline_time) {
     
     const double READ_RATIO = 0.8;
     
-    for (int threads : {1, 4, 8, 16}) {
+    for (int threads : {1, 2, 4, 8}) {  // Reduced from {1,4,8,16} to {1,2,4,8}
         double time = benchmarkWorkload<HashTable>(threads, OPERATIONS, READ_RATIO);
         double throughput = (OPERATIONS / time) / 1e6;
         double speedup = (baseline_time > 0 && time > 0) ? baseline_time / time : 0.0;
@@ -93,10 +93,10 @@ int main() {
     cout << "Sequential Time: " << fixed << setprecision(4) << baseline_time << "s" << endl;
     
     // --- Run Parallel Benchmarks ---
-    // runParallelBenchmark<CoarseGrainedHashTable<int, int>>("Coarse-Grained", baseline_time);
+    runParallelBenchmark<CoarseGrainedHashTable<int, int>>("Coarse-Grained", baseline_time);
     runParallelBenchmark<FineGrainedHashTable<int, int>>("Fine-Grained", baseline_time);
-    // runParallelBenchmark<SegmentBasedHashTable<int, int>>("Segment-Based", baseline_time);
-    // runParallelBenchmark<LockFreeHashTable<int, int>>("Lock-Free", baseline_time);
+    runParallelBenchmark<SegmentBasedHashTable<int, int>>("Segment-Based", baseline_time);
+    runParallelBenchmark<LockFreeHashTable<int, int>>("Lock-Free", baseline_time);
     
     return 0;
 }
