@@ -3,7 +3,6 @@
 #include <sstream>
 #include <string>
 #include <vector>
-#include <unordered_map>
 #include <iomanip>
 #include <omp.h>
 #include "../fine_grained.h"
@@ -28,51 +27,14 @@ double wordCountWithLibrary(const string& filename, int num_threads, size_t& tot
     {
         #pragma omp for
         for (size_t i = 0; i < words.size(); ++i) {
-            int count;
-            if (wordCount.search(words[i], count)) {
-                wordCount.insert(words[i], count + 1);
-            } else {
-                wordCount.insert(words[i], 1);
-            }
+            // Use increment method to atomically increment count
+            // This avoids race condition between search and insert
+            wordCount.increment(words[i], 1);
         }
     }
     
     double end_time = omp_get_wtime();
     unique_words = wordCount.size();
-    
-    return end_time - start_time;
-}
-
-// Parallel word count without library (using std::unordered_map + lock)
-double wordCountWithStdMap(const string& filename, int num_threads, size_t& total_words, size_t& unique_words) {
-    unordered_map<string, int> wordCount;
-    omp_lock_t map_lock;
-    omp_init_lock(&map_lock);
-    
-    vector<string> words = readWordsFromFile(filename);
-    if (words.empty()) {
-        omp_destroy_lock(&map_lock);
-        return -1;
-    }
-    
-    total_words = words.size();
-    
-    double start_time = omp_get_wtime();
-    
-    #pragma omp parallel num_threads(num_threads)
-    {
-        #pragma omp for
-        for (size_t i = 0; i < words.size(); ++i) {
-            omp_set_lock(&map_lock);
-            wordCount[words[i]]++;
-            omp_unset_lock(&map_lock);
-        }
-    }
-    
-    double end_time = omp_get_wtime();
-    unique_words = wordCount.size();
-    
-    omp_destroy_lock(&map_lock);
     
     return end_time - start_time;
 }
@@ -105,11 +67,10 @@ void runBenchmark(const string& filename, const vector<int>& thread_counts) {
          << setw(15) << "Speedup" << endl;
     cout << string(75, '-') << endl;
     
-    double baseline_library = 0;
-    double baseline_std = 0;
+    double baseline_time = 0;
     
-    // Test library version
-    cout << "\n--- Using Concurrent Hash Table Library ---" << endl;
+    // Test library version with different thread counts
+    cout << "\n--- Concurrent Hash Table Library Performance ---" << endl;
     for (int threads : thread_counts) {
         size_t total_words = 0, unique_words = 0;
         double time = wordCountWithLibrary(filename, threads, total_words, unique_words);
@@ -117,8 +78,8 @@ void runBenchmark(const string& filename, const vector<int>& thread_counts) {
         if (time < 0) continue;
         
         double throughput = (total_words / time) / 1e6;
-        if (threads == 1) baseline_library = time;
-        double speedup = baseline_library / time;
+        if (threads == 1) baseline_time = time;
+        double speedup = (baseline_time > 0 && time > 0) ? baseline_time / time : 0.0;
         
         cout << setw(15) << "Library"
              << setw(10) << threads
@@ -127,34 +88,20 @@ void runBenchmark(const string& filename, const vector<int>& thread_counts) {
              << setw(15) << fixed << setprecision(2) << speedup << endl;
     }
     
-    // Test std::map version
-    cout << "\n--- Using std::unordered_map + Lock ---" << endl;
-    for (int threads : thread_counts) {
-        size_t total_words = 0, unique_words = 0;
-        double time = wordCountWithStdMap(filename, threads, total_words, unique_words);
-        
-        if (time < 0) continue;
-        
-        double throughput = (total_words / time) / 1e6;
-        if (threads == 1) baseline_std = time;
-        double speedup = baseline_std / time;
-        
-        cout << setw(15) << "std::map+Lock"
-             << setw(10) << threads
-             << setw(15) << fixed << setprecision(4) << time
-             << setw(20) << fixed << setprecision(2) << throughput
-             << setw(15) << fixed << setprecision(2) << speedup << endl;
-    }
-    
-    // Comparison summary
+    // Summary
     cout << "\n--- Summary ---" << endl;
-    size_t total_words = 0, unique_words = 0;
-    double time_lib = wordCountWithLibrary(filename, 8, total_words, unique_words);
-    double time_std = wordCountWithStdMap(filename, 8, total_words, unique_words);
-    
-    if (time_lib > 0 && time_std > 0) {
-        double speedup = time_std / time_lib;
-        cout << "Library vs std::map speedup (8 threads): " << fixed << setprecision(2) << speedup << "x" << endl;
+    if (baseline_time > 0) {
+        cout << "Baseline (1 thread): " << fixed << setprecision(4) << baseline_time << "s" << endl;
+        if (thread_counts.size() > 1) {
+            size_t total_words = 0, unique_words = 0;
+            int max_threads = thread_counts.back();
+            double max_time = wordCountWithLibrary(filename, max_threads, total_words, unique_words);
+            if (max_time > 0) {
+                double max_speedup = baseline_time / max_time;
+                cout << "Best speedup (" << max_threads << " threads): " 
+                     << fixed << setprecision(2) << max_speedup << "x" << endl;
+            }
+        }
     }
 }
 

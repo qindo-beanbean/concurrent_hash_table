@@ -29,14 +29,9 @@ double wordCountWithLibrary(const string& filename, int num_threads, size_t& tot
     {
         #pragma omp for
         for (size_t i = 0; i < words.size(); ++i) {
-            int count;
-            if (wordCount.search(words[i], count)) {
-                // Word exists, increment count
-                wordCount.insert(words[i], count + 1);
-            } else {
-                // New word, initialize to 1
-                wordCount.insert(words[i], 1);
-            }
+            // Use increment method to atomically increment count
+            // This avoids race condition between search and insert
+            wordCount.increment(words[i], 1);
         }
     }
     

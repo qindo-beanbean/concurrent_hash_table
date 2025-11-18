@@ -30,20 +30,31 @@ double benchmarkWorkload(int num_threads, int total_ops, double read_ratio) {
     }
 
     // --- Phase 2: Run the mixed workload ---
+    // Use thread-local fast linear congruential RNG to avoid:
+    // 1. Pre-generation overhead (serial generation of millions of random numbers)
+    // 2. Memory overhead (large vector)
+    // 3. Cache contention and false sharing (all threads reading same vector)
     double start_time = omp_get_wtime();
+
+    // Convert read_ratio to integer threshold (0-10000 for precision)
+    int read_threshold = static_cast<int>(read_ratio * 10000);
 
     #pragma omp parallel num_threads(num_threads)
     {
-        // Each thread gets its own random number generator to avoid data races on rand()
-        unsigned int seed = omp_get_thread_num();
-        std::mt19937 generator(seed);
-        std::uniform_real_distribution<double> distribution(0.0, 1.0);
-
+        // Each thread gets its own fast linear congruential RNG
+        // Using simple LCG: x = (a * x + c) mod m
+        // Parameters from Numerical Recipes (a=1664525, c=1013904223)
+        unsigned int rng_state = omp_get_thread_num() + 1;  // Different seed per thread
+        
         #pragma omp for
         for (int i = 0; i < workload_ops; ++i) {
-            // Generate a key. Note: This simple key generation might lead to contention.
-            int key = i; 
-            if (distribution(generator) < read_ratio) {
+            // Fast LCG: only a few CPU cycles
+            rng_state = rng_state * 1664525u + 1013904223u;
+            // Extract lower 16 bits and scale to 0-10000 range
+            int rand_val = (rng_state & 0xFFFF) * 10000 / 65536;
+            
+            int key = i;
+            if (rand_val < read_threshold) {
                 int value;
                 ht.search(key % initial_inserts, value);
             } else {
@@ -64,6 +75,8 @@ void runParallelBenchmark(const string& name, double baseline_time) {
          << setw(20) << "Throughput (M/s)" 
          << setw(15) << "Speedup" << endl;
     cout << string(60, '-') << endl;
+    cout << "  (Speedup is relative to Sequential baseline: " << fixed << setprecision(4) << baseline_time << "s)" << endl;
+    cout << string(60, '-') << endl;
     
     const double READ_RATIO = 0.8;
     
@@ -75,7 +88,13 @@ void runParallelBenchmark(const string& name, double baseline_time) {
         cout << setw(10) << threads 
              << setw(15) << fixed << setprecision(4) << time
              << setw(20) << fixed << setprecision(2) << throughput
-             << setw(15) << fixed << setprecision(2) << speedup << endl;
+             << setw(15) << fixed << setprecision(2) << speedup;
+        if (speedup > 1.0) {
+            cout << " (faster)";
+        } else if (speedup < 1.0 && speedup > 0) {
+            cout << " (slower)";
+        }
+        cout << endl;
     }
 }
 
