@@ -20,3 +20,4 @@ test_tsan
 # OS files
 .DS_Store
 Thumbs.db
+bench_matrix_simple
