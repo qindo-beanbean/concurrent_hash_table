@@ -2,150 +2,121 @@
 #define SEGMENT_BASED_H
 
 #include "common.h"
-#include <algorithm>  // For std::max and std::min
+#include <vector>
+#include <list>
+#include <atomic>
+#include <omp.h>
+
+// Compile-time override:
+//   g++ ... -DSB_DEFAULT_SEGMENTS=256
+#ifndef SB_DEFAULT_SEGMENTS
+#define SB_DEFAULT_SEGMENTS 128
+#endif
 
 template<typename K, typename V>
 class SegmentBasedHashTable {
 private:
-    // Fixed segment count: 16 segments
-    // Note: Increasing segments reduces lock contention but may increase
-    // memory overhead and cache misses. 16 is a reasonable balance.
-    static const size_t NUM_SEGMENTS = 16;  // Number of segments
-    
-    // Align to cache line size (64 bytes) to avoid false sharing
-    // This prevents different segments from sharing the same cache line,
-    // which would cause false sharing and severe performance degradation
+    static const size_t NUM_SEGMENTS = SB_DEFAULT_SEGMENTS;
+
     struct alignas(64) Segment {
-        std::vector<std::list<KeyValue<K, V>>> buckets;
-        mutable omp_lock_t lock;  // mutable allows locking in const methods
+        std::vector<std::list<KeyValue<K,V>>> buckets;
         size_t buckets_per_segment;
-        // Padding to ensure each Segment occupies at least one cache line (64 bytes)
-        // This prevents false sharing when multiple threads access different segments
-        char padding[64];
-        
-        Segment(size_t bps) : buckets_per_segment(bps) {
+        omp_lock_t lock;
+        explicit Segment(size_t bps) : buckets_per_segment(bps) {
             buckets.resize(buckets_per_segment);
             omp_init_lock(&lock);
         }
-        
-        ~Segment() {
-            omp_destroy_lock(&lock);
-        }
-        
-        // Disable copy
+        ~Segment() { omp_destroy_lock(&lock); }
         Segment(const Segment&) = delete;
         Segment& operator=(const Segment&) = delete;
+        Segment(Segment&&) = delete;
+        Segment& operator=(Segment&&) = delete;
     };
-    
+
     std::vector<Segment*> segments;
-    size_t total_buckets;
-    size_t buckets_per_segment;  // Cache this to avoid accessing seg->buckets_per_segment every time
     std::atomic<size_t> element_count;
-    
-    // Use static hasher to avoid recreating Hash object on every call
-    static size_t hashKey(const K& key) {
-        // Hash<K> is just a wrapper around std::hash, so this is efficient
-        return std::hash<K>{}(key);
+    size_t requested_bucket_count;
+
+    inline size_t segment_index(size_t h) const { return h % NUM_SEGMENTS; }
+
+    inline size_t bucket_in_segment(size_t h, size_t seg) const {
+        // Use higher hash bits to avoid reusing low bits for both segment and bucket
+        size_t bps = segments[seg]->buckets_per_segment;
+        return (h / NUM_SEGMENTS) % bps;
     }
 
 public:
-    SegmentBasedHashTable(size_t bucket_count = 1024) 
-        : total_buckets(bucket_count), 
-          buckets_per_segment(bucket_count / NUM_SEGMENTS == 0 ? 1 : bucket_count / NUM_SEGMENTS),
-          element_count(0) {
-        
+    explicit SegmentBasedHashTable(size_t bucket_count = 1024)
+        : element_count(0), requested_bucket_count(bucket_count) {
+
+        size_t base = bucket_count / NUM_SEGMENTS;
+        size_t rem  = bucket_count % NUM_SEGMENTS;
+
+        segments.reserve(NUM_SEGMENTS);
         for (size_t i = 0; i < NUM_SEGMENTS; ++i) {
-            segments.push_back(new Segment(buckets_per_segment));
+            size_t bps = base + (i < rem ? 1 : 0);
+            segments.push_back(new Segment(bps));
         }
     }
-    
+
+    SegmentBasedHashTable(const SegmentBasedHashTable&) = delete;
+    SegmentBasedHashTable& operator=(const SegmentBasedHashTable&) = delete;
+    SegmentBasedHashTable(SegmentBasedHashTable&&) = delete;
+    SegmentBasedHashTable& operator=(SegmentBasedHashTable&&) = delete;
+
     ~SegmentBasedHashTable() {
-        for (auto seg : segments) {
-            delete seg;
-        }
+        for (auto s : segments) delete s;
     }
-    
+
     bool insert(const K& key, const V& value) {
-        // Compute hash once and reuse (using efficient hash function)
-        size_t hash_val = hashKey(key);
-        size_t seg_idx = hash_val % NUM_SEGMENTS;
-        Segment* seg = segments[seg_idx];
-        
-        omp_set_lock(&seg->lock);  // Lock only the corresponding segment
-        
-        size_t bucket_idx = (hash_val >> 4) % buckets_per_segment; // Use cached value
-        auto& bucket = seg->buckets[bucket_idx];
-        
-        // Check if key already exists
+        size_t h = Hash<K>{}(key);
+        size_t seg = segment_index(h);
+        Segment* s = segments[seg];
+        omp_set_lock(&s->lock);
+        auto& bucket = s->buckets[bucket_in_segment(h, seg)];
         for (auto& kv : bucket) {
-            if (kv.key == key) {
-                kv.value = value;
-                omp_unset_lock(&seg->lock);
-                return false;
-            }
+            if (kv.key == key) { kv.value = value; omp_unset_lock(&s->lock); return false; }
         }
-        
         bucket.emplace_back(key, value);
-        element_count++;
-        
-        omp_unset_lock(&seg->lock);
+        element_count.fetch_add(1, std::memory_order_relaxed);
+        omp_unset_lock(&s->lock);
         return true;
     }
-    
+
     bool search(const K& key, V& value) const {
-        // Compute hash once and reuse (using efficient hash function)
-        size_t hash_val = hashKey(key);
-        size_t seg_idx = hash_val % NUM_SEGMENTS;
-        Segment* seg = segments[seg_idx];
-        
-        omp_set_lock(&seg->lock);  // mutable lock allows this in const method
-        
-        size_t bucket_idx = (hash_val>> 4) % buckets_per_segment;  // Use cached value
-        const auto& bucket = seg->buckets[bucket_idx];
-        
+        size_t h = Hash<K>{}(key);
+        size_t seg = segment_index(h);
+        Segment* s = segments[seg];
+        omp_set_lock(&s->lock);
+        const auto& bucket = s->buckets[bucket_in_segment(h, seg)];
         for (const auto& kv : bucket) {
-            if (kv.key == key) {
-                value = kv.value;
-                omp_unset_lock(&seg->lock);
-                return true;
-            }
+            if (kv.key == key) { value = kv.value; omp_unset_lock(&s->lock); return true; }
         }
-        
-        omp_unset_lock(&seg->lock);
+        omp_unset_lock(&s->lock);
         return false;
     }
-    
+
     bool remove(const K& key) {
-        // Compute hash once and reuse (using efficient hash function)
-        size_t hash_val = hashKey(key);
-        size_t seg_idx = hash_val % NUM_SEGMENTS;
-        Segment* seg = segments[seg_idx];
-        
-        omp_set_lock(&seg->lock);
-        
-        size_t bucket_idx = (hash_val>> 4) % buckets_per_segment;  // Use cached value
-        auto& bucket = seg->buckets[bucket_idx];
-        
+        size_t h = Hash<K>{}(key);
+        size_t seg = segment_index(h);
+        Segment* s = segments[seg];
+        omp_set_lock(&s->lock);
+        auto& bucket = s->buckets[bucket_in_segment(h, seg)];
         for (auto it = bucket.begin(); it != bucket.end(); ++it) {
             if (it->key == key) {
                 bucket.erase(it);
-                element_count--;
-                omp_unset_lock(&seg->lock);
+                element_count.fetch_sub(1, std::memory_order_relaxed);
+                omp_unset_lock(&s->lock);
                 return true;
             }
         }
-        
-        omp_unset_lock(&seg->lock);
+        omp_unset_lock(&s->lock);
         return false;
     }
-    
-    size_t size() const {
-        return element_count.load();
-    }
-    
-    std::string getName() const {
-        return "Segment-Based";
-    }
+
+    size_t size() const { return element_count.load(std::memory_order_relaxed); }
+    size_t effective_bucket_count() const { return requested_bucket_count; } // exact now
+    std::string getName() const { return "Segment-Based-Exact"; }
 };
 
 #endif // SEGMENT_BASED_H
