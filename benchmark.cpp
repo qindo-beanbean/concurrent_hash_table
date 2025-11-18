@@ -1,31 +1,41 @@
 #include <iostream>
 #include <iomanip>
 #include <omp.h>
-#include <vector>
+#include <random>
 #include <string>
-#include <random> // Use C++ random for better, thread-safe random numbers
+#include <vector>
 #include "sequential.h"
 #include "coarse_grained.h"
-#include "segment_based.h"
 #include "fine_grained.h"
-#include "lock_free.h"
-
-#define OPERATIONS 2000000  // Reduced from 20M to 2M for faster testing
-
+#include "segment_based.h"
+#include "coarse_grained_padded.h"
+#include "fine_grained_padded.h"
+#include "segment_based_padded.h"
+#include "hotset.h"
 
 using namespace std;
 
-// This function will now be used for all hash tables, including sequential.
-template<typename HashTable>
-double benchmarkWorkload(int num_threads, int total_ops, double read_ratio) {
-    HashTable ht(16384);
-    int initial_inserts = total_ops / 2;
-    int workload_ops = total_ops - initial_inserts;
+struct RunConfig {
+    string table_name;
+    string distribution; // uniform | skew
+    string mix;          // e.g. "80/20"
+    int threads;
+    int ops;
+    double read_ratio;
+    double time_sec;
+    double throughput_mops;
+    double speedup;
+};
 
-    // --- Phase 1: Pre-fill the hash table ---
-    // Note: For sequential, this loop runs with num_threads = 1.
-    #pragma omp parallel for num_threads(num_threads)
-    for (int i = 0; i < initial_inserts; ++i) {
+template<typename HT>
+double run_workload(int threads, int total_ops, double read_ratio, bool skewed) {
+    HT ht(16384);
+    int initial = total_ops / 2;
+    int mixed = total_ops - initial;
+
+    // Pre-fill phase (parallel)
+    #pragma omp parallel for num_threads(threads)
+    for (int i = 0; i < initial; ++i) {
         ht.insert(i, i * 2);
     }
 
@@ -58,13 +68,12 @@ double benchmarkWorkload(int num_threads, int total_ops, double read_ratio) {
                 int value;
                 ht.search(key % initial_inserts, value);
             } else {
-                ht.insert(initial_inserts + i, i);
+                ht.insert(initial + i, i);
             }
         }
     }
-
-    double end_time = omp_get_wtime();
-    return end_time - start_time;
+    double t1 = omp_get_wtime();
+    return t1 - t0;
 }
 
 template<typename HashTable>
@@ -99,23 +108,77 @@ void runParallelBenchmark(const string& name, double baseline_time) {
 }
 
 int main() {
-    cout << "=====================================" << endl;
-    cout << "  Concurrent Hash Table Benchmark" << endl;
-    cout << "=====================================" << endl;
+    ios::sync_with_stdio(false);
+    const int OPS = 2'000'000;
 
-    const double READ_RATIO = 0.8;
+    cout << "====================================================\n";
+    cout << "Concurrent Hash Table Benchmark (Option A Core)\n";
+    cout << "====================================================\n";
 
-    // --- Get the true baseline using the SequentialHashTable ---
-    // We run it via benchmarkWorkload with 1 thread to ensure identical optimization.
-    cout << "\n--- Measuring Sequential Baseline ---" << endl;
-    double baseline_time = benchmarkWorkload<SequentialHashTable<int, int>>(1, OPERATIONS, READ_RATIO);
-    cout << "Sequential Time: " << fixed << setprecision(4) << baseline_time << "s" << endl;
-    
-    // --- Run Parallel Benchmarks ---
-    runParallelBenchmark<CoarseGrainedHashTable<int, int>>("Coarse-Grained", baseline_time);
-    runParallelBenchmark<FineGrainedHashTable<int, int>>("Fine-Grained", baseline_time);
-    runParallelBenchmark<SegmentBasedHashTable<int, int>>("Segment-Based", baseline_time);
-    runParallelBenchmark<LockFreeHashTable<int, int>>("Lock-Free", baseline_time);
-    
+    cout << "\nBaseline (Sequential, uniform 80/20)...\n";
+    double baseline_seq = run_workload<SequentialHashTable<int,int>>(1, OPS, 0.8, false);
+    cout << "Sequential Time: " << baseline_seq << " s\n";
+
+    vector<RunConfig> results;
+
+    auto header = [] (const string& title) {
+        cout << "\n=== " << title << " ===\n";
+        cout << setw(10) << "Threads"
+             << setw(15) << "Time(s)"
+             << setw(18) << "Throughput(Mops/s)"
+             << setw(12) << "Speedup"
+             << "\n" << string(60,'-') << "\n";
+    };
+
+    // Uniform 80/20
+    header("Coarse-Grained uniform 80/20");
+    run_suite<CoarseGrainedHashTable<int,int>>("Coarse", baseline_seq, OPS, 0.8, "80/20", false, results);
+
+    header("Coarse-Grained-Padded uniform 80/20");
+    run_suite<CoarseGrainedHashTablePadded<int,int>>("Coarse-Padded", baseline_seq, OPS, 0.8, "80/20", false, results);
+
+    header("Fine-Grained uniform 80/20");
+    run_suite<FineGrainedHashTable<int,int>>("Fine", baseline_seq, OPS, 0.8, "80/20", false, results);
+
+    header("Fine-Grained-Padded uniform 80/20");
+    run_suite<FineGrainedHashTablePadded<int,int>>("Fine-Padded", baseline_seq, OPS, 0.8, "80/20", false, results);
+
+    header("Segment-Based uniform 80/20");
+    run_suite<SegmentBasedHashTable<int,int>>("Segment", baseline_seq, OPS, 0.8, "80/20", false, results);
+
+    header("Segment-Based-Padded uniform 80/20");
+    run_suite<SegmentBasedHashTablePadded<int,int>>("Segment-Padded", baseline_seq, OPS, 0.8, "80/20", false, results);
+
+    // Skewed 80/20
+    header("Coarse-Grained skew 80/20");
+    run_suite<CoarseGrainedHashTable<int,int>>("Coarse", baseline_seq, OPS, 0.8, "80/20", true, results);
+
+    header("Coarse-Grained-Padded skew 80/20");
+    run_suite<CoarseGrainedHashTablePadded<int,int>>("Coarse-Padded", baseline_seq, OPS, 0.8, "80/20", true, results);
+
+    header("Fine-Grained skew 80/20");
+    run_suite<FineGrainedHashTable<int,int>>("Fine", baseline_seq, OPS, 0.8, "80/20", true, results);
+
+    header("Fine-Grained-Padded skew 80/20");
+    run_suite<FineGrainedHashTablePadded<int,int>>("Fine-Padded", baseline_seq, OPS, 0.8, "80/20", true, results);
+
+    header("Segment-Based skew 80/20");
+    run_suite<SegmentBasedHashTable<int,int>>("Segment", baseline_seq, OPS, 0.8, "80/20", true, results);
+
+    header("Segment-Based-Padded skew 80/20");
+    run_suite<SegmentBasedHashTablePadded<int,int>>("Segment-Padded", baseline_seq, OPS, 0.8, "80/20", true, results);
+
+    // Simple CSV dump (stdout)
+    cout << "\nCSV_RESULTS_BEGIN\n";
+    cout << "table,distribution,mix,threads,ops,read_ratio,time_sec,throughput_mops,speedup\n";
+    for (auto& r : results) {
+        cout << r.table_name << "," << r.distribution << "," << r.mix << ","
+             << r.threads << "," << r.ops << "," << r.read_ratio << ","
+             << fixed << setprecision(6) << r.time_sec << ","
+             << fixed << setprecision(6) << r.throughput_mops << ","
+             << fixed << setprecision(4) << r.speedup << "\n";
+    }
+    cout << "CSV_RESULTS_END\n";
+
     return 0;
 }
