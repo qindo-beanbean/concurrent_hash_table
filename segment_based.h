@@ -10,7 +10,7 @@
 // Compile-time override:
 //   g++ ... -DSB_DEFAULT_SEGMENTS=256
 #ifndef SB_DEFAULT_SEGMENTS
-#define SB_DEFAULT_SEGMENTS 128
+#define SB_DEFAULT_SEGMENTS 512
 #endif
 
 template<typename K, typename V>
