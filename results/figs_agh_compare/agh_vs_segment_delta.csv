@@ -1,0 +1,3 @@
+dist,bucket_count,segment_thr,agh_thr,delta_pct
+skew,262144,7.031,7.359,4.665054757502493
+uniform,1048576,14.714,19.107,29.855919532418095

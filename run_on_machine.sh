@@ -2,7 +2,7 @@
 set -euo pipefail
 
 if [ $# -ne 1 ]; then
-  echo "Usage: $0 <impl: coarse|fine|segment|lockfree>" >&2
+  echo "Usage: $0 <impl: coarse|fine|segment|lockfree|agh>" >&2
   exit 1
 fi
 

@@ -7,6 +7,7 @@
 #include "fine_grained.h"
 #include "segment_based.h"
 #include "lock_free.h"
+#include "agh_hash_table.h"
 
 // Simple hot-set generator: p_hot = probability of choosing from [0, hotN),
 // otherwise choose from [hotN, universe)
@@ -173,8 +174,10 @@ int main(int argc, char** argv) {
         run_matrix_for_impl<SegmentBasedHashTable<int,int>>("Segment", rows, threads_vec, strong_ops, weak_ops_per_thread, mixes, buckets_vec, p_hots, hot_frac);
     } else if (impl=="lockfree" || impl=="lock-free") {
         run_matrix_for_impl<LockFreeHashTable<int,int>>("Lock-Free", rows, threads_vec, strong_ops, weak_ops_per_thread, mixes, buckets_vec, p_hots, hot_frac);
+    } else if (impl=="agh") {
+        run_matrix_for_impl<AGHHashTable<int,int>>("AGH", rows, threads_vec, strong_ops, weak_ops_per_thread, mixes, buckets_vec, p_hots, hot_frac);
     } else {
-        fprintf(stderr, "Error: --impl must be one of coarse|fine|segment|segment-exact|lockfree\n");
+        fprintf(stderr, "Error: --impl must be one of coarse|fine|segment|segment-exact|lockfree|agh\n");
         return 1;
     }
 
