@@ -26,12 +26,10 @@ double deduplicateWithLibrary(const string& filename, int num_threads, size_t& t
     {
         #pragma omp for
         for (size_t i = 0; i < data.size(); ++i) {
-            bool exists;
-            if (!seen.search(data[i], exists)) {
-                // New value, insert
-                seen.insert(data[i], true);
-            }
-            // If already exists, skip (deduplication)
+            // Use insert - it returns false if key already exists
+            // This avoids race condition between search and insert
+            seen.insert(data[i], true);
+            // insert handles both cases: new insertion and existing key
         }
     }
     

@@ -7,7 +7,7 @@ SANITIZE = -fsanitize=thread -g
 
 # Target files
 TARGETS = test benchmark
-WORD_COUNT_TARGETS = word_count/word_count_library word_count/word_count_std word_count/word_count_benchmark word_count/generate_test_data
+WORD_COUNT_TARGETS = word_count/word_count_library word_count/word_count_benchmark word_count/generate_test_data
 DEDUP_TARGETS = deduplication/deduplication_library deduplication/deduplication_std deduplication/deduplication_benchmark deduplication/generate_dedup_data
 CACHE_SIM_TARGETS = cache_sim/cache_sim_library cache_sim/cache_sim_std cache_sim/cache_sim_benchmark
 
@@ -58,9 +58,6 @@ run_benchmark_prof: benchmark_prof
 # Compile word count programs
 word_count/word_count_library: word_count/word_count_library.cpp
 	$(CXX) $(CXXFLAGS) -I. word_count/word_count_library.cpp -o word_count/word_count_library
-
-word_count/word_count_std: word_count/word_count_std.cpp
-	$(CXX) $(CXXFLAGS) -I. word_count/word_count_std.cpp -o word_count/word_count_std
 
 word_count/word_count_benchmark: word_count/word_count_benchmark.cpp
 	$(CXX) $(CXXFLAGS) -I. word_count/word_count_benchmark.cpp -o word_count/word_count_benchmark

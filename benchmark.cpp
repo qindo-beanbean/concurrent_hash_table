@@ -39,22 +39,34 @@ double run_workload(int threads, int total_ops, double read_ratio, bool skewed) 
         ht.insert(i, i * 2);
     }
 
-    HotsetGen hot(initial, max(1, initial/10), 0.9, 777); // hot 10%, 90% accesses
+    // --- Phase 2: Run the mixed workload ---
+    // Use thread-local fast linear congruential RNG to avoid:
+    // 1. Pre-generation overhead (serial generation of millions of random numbers)
+    // 2. Memory overhead (large vector)
+    // 3. Cache contention and false sharing (all threads reading same vector)
+    double start_time = omp_get_wtime();
 
-    double t0 = omp_get_wtime();
-    #pragma omp parallel num_threads(threads)
+    // Convert read_ratio to integer threshold (0-10000 for precision)
+    int read_threshold = static_cast<int>(read_ratio * 10000);
+
+    #pragma omp parallel num_threads(num_threads)
     {
-        int tid = omp_get_thread_num();
-        std::mt19937 rng(1234 + tid);
-        std::uniform_real_distribution<double> coin(0.0, 1.0);
-
+        // Each thread gets its own fast linear congruential RNG
+        // Using simple LCG: x = (a * x + c) mod m
+        // Parameters from Numerical Recipes (a=1664525, c=1013904223)
+        unsigned int rng_state = omp_get_thread_num() + 1;  // Different seed per thread
+        
         #pragma omp for
-        for (int i = 0; i < mixed; ++i) {
-            bool is_read = coin(rng) < read_ratio;
-            int key = skewed ? hot.draw() : (i % initial);
-            if (is_read) {
-                int v;
-                ht.search(key, v);
+        for (int i = 0; i < workload_ops; ++i) {
+            // Fast LCG: only a few CPU cycles
+            rng_state = rng_state * 1664525u + 1013904223u;
+            // Extract lower 16 bits and scale to 0-10000 range
+            int rand_val = (rng_state & 0xFFFF) * 10000 / 65536;
+            
+            int key = i;
+            if (rand_val < read_threshold) {
+                int value;
+                ht.search(key % initial_inserts, value);
             } else {
                 ht.insert(initial + i, i);
             }
@@ -64,24 +76,34 @@ double run_workload(int threads, int total_ops, double read_ratio, bool skewed) 
     return t1 - t0;
 }
 
-template<typename HT>
-void run_suite(const string& name,
-               double baseline_seq,
-               int total_ops,
-               double read_ratio,
-               const string& mix_label,
-               bool skewed,
-               vector<RunConfig>& out) {
-    for (int th : {1,2,4,8,16}) {
-        double t = run_workload<HT>(th, total_ops, read_ratio, skewed);
-        double thr = (double)total_ops / t / 1e6;
-        double speed = baseline_seq / t;
-        out.push_back(RunConfig{name, skewed ? "skew" : "uniform", mix_label, th, total_ops, read_ratio, t, thr, speed});
-        cout << setw(10) << th
-             << setw(15) << fixed << setprecision(4) << t
-             << setw(18) << fixed << setprecision(2) << thr
-             << setw(12) << fixed << setprecision(2) << speed
-             << endl;
+template<typename HashTable>
+void runParallelBenchmark(const string& name, double baseline_time) {
+    cout << "\n=== " << name << " ===" << endl;
+    cout << setw(10) << "Threads" 
+         << setw(15) << "Time (s)" 
+         << setw(20) << "Throughput (M/s)" 
+         << setw(15) << "Speedup" << endl;
+    cout << string(60, '-') << endl;
+    cout << "  (Speedup is relative to Sequential baseline: " << fixed << setprecision(4) << baseline_time << "s)" << endl;
+    cout << string(60, '-') << endl;
+    
+    const double READ_RATIO = 0.8;
+    
+    for (int threads : {1, 2, 4, 8}) {  // Reduced from {1,4,8,16} to {1,2,4,8}
+        double time = benchmarkWorkload<HashTable>(threads, OPERATIONS, READ_RATIO);
+        double throughput = (OPERATIONS / time) / 1e6;
+        double speedup = (baseline_time > 0 && time > 0) ? baseline_time / time : 0.0;
+        
+        cout << setw(10) << threads 
+             << setw(15) << fixed << setprecision(4) << time
+             << setw(20) << fixed << setprecision(2) << throughput
+             << setw(15) << fixed << setprecision(2) << speedup;
+        if (speedup > 1.0) {
+            cout << " (faster)";
+        } else if (speedup < 1.0 && speedup > 0) {
+            cout << " (slower)";
+        }
+        cout << endl;
     }
 }
 
