@@ -27,47 +27,58 @@ struct RunConfig {
     double speedup;
 };
 
+// Forward declaration for run_suite so calls parse correctly
+template<typename HT>
+void run_suite(const std::string& name,
+               double baseline_seq,
+               int total_ops,
+               double read_ratio,
+               const std::string& mix_label,
+               bool skewed,
+               std::vector<RunConfig>& out_results);
+
+// Minimal, corrected workload runner
 template<typename HT>
 double run_workload(int threads, int total_ops, double read_ratio, bool skewed) {
+    // Fixed-size table for this run; adjust if you want to parameterize capacity
     HT ht(16384);
-    int initial = total_ops / 2;
-    int mixed = total_ops - initial;
 
-    // Pre-fill phase (parallel)
+    // Split into build + mixed
+    const int initial = total_ops / 2;
+    const int mixed_ops = total_ops - initial;
+
+    // Build (parallel bulk insert of unique keys)
     #pragma omp parallel for num_threads(threads)
     for (int i = 0; i < initial; ++i) {
         ht.insert(i, i * 2);
     }
 
-    // --- Phase 2: Run the mixed workload ---
-    // Use thread-local fast linear congruential RNG to avoid:
-    // 1. Pre-generation overhead (serial generation of millions of random numbers)
-    // 2. Memory overhead (large vector)
-    // 3. Cache contention and false sharing (all threads reading same vector)
-    double start_time = omp_get_wtime();
+    // Mixed phase
+    const int read_threshold = static_cast<int>(read_ratio * 10000.0);
+    const int hotN = std::max(1, initial / 10); // small hot set for skewed reads
 
-    // Convert read_ratio to integer threshold (0-10000 for precision)
-    int read_threshold = static_cast<int>(read_ratio * 10000);
-
-    #pragma omp parallel num_threads(num_threads)
+    double t0 = omp_get_wtime();
+    #pragma omp parallel num_threads(threads)
     {
-        // Each thread gets its own fast linear congruential RNG
-        // Using simple LCG: x = (a * x + c) mod m
-        // Parameters from Numerical Recipes (a=1664525, c=1013904223)
-        unsigned int rng_state = omp_get_thread_num() + 1;  // Different seed per thread
-        
+        // Thread-local simple LCG
+        unsigned int rng_state = 0x9e3779b9u + 1013904223u * (unsigned)omp_get_thread_num();
+
+        // Optional hot-set generator (only used when skewed)
+        HotsetGen hotgen(initial, hotN, /*p_hot=*/0.90, /*seed=*/rng_state);
+
         #pragma omp for
-        for (int i = 0; i < workload_ops; ++i) {
-            // Fast LCG: only a few CPU cycles
+        for (int i = 0; i < mixed_ops; ++i) {
+            // Fast LCG update and 0..9999 threshold scale
             rng_state = rng_state * 1664525u + 1013904223u;
-            // Extract lower 16 bits and scale to 0-10000 range
-            int rand_val = (rng_state & 0xFFFF) * 10000 / 65536;
-            
-            int key = i;
+            int rand_val = (int)((rng_state & 0xFFFFu) * 10000u / 65536u);
+
             if (rand_val < read_threshold) {
+                // READ: pick an existing key
+                int key = skewed ? hotgen.draw() : (int)(rng_state % (unsigned)initial);
                 int value;
-                ht.search(key % initial_inserts, value);
+                ht.search(key, value);
             } else {
+                // WRITE: insert a unique new key
                 ht.insert(initial + i, i);
             }
         }
@@ -76,25 +87,61 @@ double run_workload(int threads, int total_ops, double read_ratio, bool skewed) 
     return t1 - t0;
 }
 
+// Simple implementation of run_suite used by main()
+template<typename HT>
+void run_suite(const std::string& name,
+               double baseline_seq,
+               int total_ops,
+               double read_ratio,
+               const std::string& mix_label,
+               bool skewed,
+               std::vector<RunConfig>& out_results)
+{
+    for (int threads : {1, 2, 4, 8}) {
+        double time_s = run_workload<HT>(threads, total_ops, read_ratio, skewed);
+        double thr_mops = (time_s > 0.0) ? (total_ops / time_s) / 1e6 : 0.0;
+        double sp = (baseline_seq > 0.0 && time_s > 0.0) ? (baseline_seq / time_s) : 0.0;
+
+        cout << setw(10) << threads
+             << setw(15) << fixed << setprecision(4) << time_s
+             << setw(18) << fixed << setprecision(2) << thr_mops
+             << setw(12) << fixed << setprecision(2) << sp << "\n";
+
+        out_results.push_back(RunConfig{
+            name,
+            skewed ? "skew" : "uniform",
+            mix_label,
+            threads,
+            total_ops,
+            read_ratio,
+            time_s,
+            thr_mops,
+            sp
+        });
+    }
+}
+
+// This helper referenced undefined names; keep it out of the build to avoid errors.
+#if 0
 template<typename HashTable>
 void runParallelBenchmark(const string& name, double baseline_time) {
     cout << "\n=== " << name << " ===" << endl;
-    cout << setw(10) << "Threads" 
-         << setw(15) << "Time (s)" 
-         << setw(20) << "Throughput (M/s)" 
+    cout << setw(10) << "Threads"
+         << setw(15) << "Time (s)"
+         << setw(20) << "Throughput (M/s)"
          << setw(15) << "Speedup" << endl;
     cout << string(60, '-') << endl;
     cout << "  (Speedup is relative to Sequential baseline: " << fixed << setprecision(4) << baseline_time << "s)" << endl;
     cout << string(60, '-') << endl;
-    
+
     const double READ_RATIO = 0.8;
-    
-    for (int threads : {1, 2, 4, 8}) {  // Reduced from {1,4,8,16} to {1,2,4,8}
+
+    for (int threads : {1, 2, 4, 8}) {
         double time = benchmarkWorkload<HashTable>(threads, OPERATIONS, READ_RATIO);
         double throughput = (OPERATIONS / time) / 1e6;
         double speedup = (baseline_time > 0 && time > 0) ? baseline_time / time : 0.0;
-        
-        cout << setw(10) << threads 
+
+        cout << setw(10) << threads
              << setw(15) << fixed << setprecision(4) << time
              << setw(20) << fixed << setprecision(2) << throughput
              << setw(15) << fixed << setprecision(2) << speedup;
@@ -106,6 +153,7 @@ void runParallelBenchmark(const string& name, double baseline_time) {
         cout << endl;
     }
 }
+#endif
 
 int main() {
     ios::sync_with_stdio(false);

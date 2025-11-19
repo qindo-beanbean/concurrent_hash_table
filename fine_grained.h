@@ -67,6 +67,26 @@ public:
         omp_unset_lock(&bucket->lock);
         return true;
     }
+
+    bool increment(const K& key, const V& delta) {
+        size_t idx = hash(key);
+        Bucket* bucket = buckets[idx];
+
+        omp_set_lock(&bucket->lock);
+        for (auto& kv : bucket->data) {
+            if (kv.key == key) {
+                kv.value += delta;      // requires V to support operator+=
+                omp_unset_lock(&bucket->lock);
+                return false;           // updated existing
+            }
+        }
+        // not found: insert with initial value = delta
+        bucket->data.emplace_back(key, delta);
+        element_count++;
+        omp_unset_lock(&bucket->lock);
+        return true;                    // inserted new
+    }
+    
     
     bool search(const K& key, V& value) const {
         size_t idx = hash(key);
