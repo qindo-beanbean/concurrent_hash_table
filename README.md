@@ -2,6 +2,9 @@
 
 This repo contains several concurrent hash table implementations (coarse, fine, segment-based, lock-free), a simple benchmark driver, and a scripts/ toolchain that generates the plots used in the report.
 
+This is in fulfillment of the course requirements for Multicore Processors:Architecture & Programming
+Authors: tkc8441 & qd2090
+
 ---
 
 ## Quick start
