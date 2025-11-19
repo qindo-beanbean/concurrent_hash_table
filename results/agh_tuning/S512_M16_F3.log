@@ -1,0 +1,643 @@
+AGH            strong  80/20 uniform  T= 1 ops= 2000000 buckets=  16384  time=2.8193  thr=0.71 Mops  speedup=0.49
+AGH            strong  80/20 uniform  T= 2 ops= 2000000 buckets=  16384  time=1.1944  thr=1.67 Mops  speedup=1.17
+AGH            strong  80/20 uniform  T= 4 ops= 2000000 buckets=  16384  time=0.6938  thr=2.88 Mops  speedup=2.01
+AGH            strong  80/20 uniform  T= 8 ops= 2000000 buckets=  16384  time=0.4082  thr=4.90 Mops  speedup=3.42
+AGH            strong  80/20 uniform  T=16 ops= 2000000 buckets=  16384  time=0.2361  thr=8.47 Mops  speedup=5.91
+AGH            strong  80/20    skew  T= 1 ops= 2000000 buckets=  16384 p_hot=0.70  time=2.4653  thr=0.81 Mops  speedup=0.54
+AGH            strong  80/20    skew  T= 2 ops= 2000000 buckets=  16384 p_hot=0.70  time=1.3690  thr=1.46 Mops  speedup=0.98
+AGH            strong  80/20    skew  T= 4 ops= 2000000 buckets=  16384 p_hot=0.70  time=0.7762  thr=2.58 Mops  speedup=1.72
+AGH            strong  80/20    skew  T= 8 ops= 2000000 buckets=  16384 p_hot=0.70  time=0.5679  thr=3.52 Mops  speedup=2.35
+AGH            strong  80/20    skew  T=16 ops= 2000000 buckets=  16384 p_hot=0.70  time=0.4866  thr=4.11 Mops  speedup=2.75
+AGH            strong  80/20    skew  T= 1 ops= 2000000 buckets=  16384 p_hot=0.90  time=1.9857  thr=1.01 Mops  speedup=0.69
+AGH            strong  80/20    skew  T= 2 ops= 2000000 buckets=  16384 p_hot=0.90  time=1.1235  thr=1.78 Mops  speedup=1.22
+AGH            strong  80/20    skew  T= 4 ops= 2000000 buckets=  16384 p_hot=0.90  time=0.7358  thr=2.72 Mops  speedup=1.86
+AGH            strong  80/20    skew  T= 8 ops= 2000000 buckets=  16384 p_hot=0.90  time=0.5839  thr=3.43 Mops  speedup=2.34
+AGH            strong  80/20    skew  T=16 ops= 2000000 buckets=  16384 p_hot=0.90  time=0.4884  thr=4.09 Mops  speedup=2.80
+AGH            strong  80/20    skew  T= 1 ops= 2000000 buckets=  16384 p_hot=0.99  time=1.7562  thr=1.14 Mops  speedup=0.78
+AGH            strong  80/20    skew  T= 2 ops= 2000000 buckets=  16384 p_hot=0.99  time=1.0231  thr=1.95 Mops  speedup=1.33
+AGH            strong  80/20    skew  T= 4 ops= 2000000 buckets=  16384 p_hot=0.99  time=0.6673  thr=3.00 Mops  speedup=2.04
+AGH            strong  80/20    skew  T= 8 ops= 2000000 buckets=  16384 p_hot=0.99  time=0.5572  thr=3.59 Mops  speedup=2.45
+AGH            strong  80/20    skew  T=16 ops= 2000000 buckets=  16384 p_hot=0.99  time=0.4843  thr=4.13 Mops  speedup=2.82
+AGH            strong  80/20 uniform  T= 1 ops= 2000000 buckets=  65536  time=0.7259  thr=2.76 Mops  speedup=0.40
+AGH            strong  80/20 uniform  T= 2 ops= 2000000 buckets=  65536  time=0.5204  thr=3.84 Mops  speedup=0.56
+AGH            strong  80/20 uniform  T= 4 ops= 2000000 buckets=  65536  time=0.3146  thr=6.36 Mops  speedup=0.93
+AGH            strong  80/20 uniform  T= 8 ops= 2000000 buckets=  65536  time=0.1837  thr=10.89 Mops  speedup=1.60
+AGH            strong  80/20 uniform  T=16 ops= 2000000 buckets=  65536  time=0.1145  thr=17.47 Mops  speedup=2.57
+AGH            strong  80/20    skew  T= 1 ops= 2000000 buckets=  65536 p_hot=0.70  time=0.8062  thr=2.48 Mops  speedup=0.43
+AGH            strong  80/20    skew  T= 2 ops= 2000000 buckets=  65536 p_hot=0.70  time=0.4564  thr=4.38 Mops  speedup=0.76
+AGH            strong  80/20    skew  T= 4 ops= 2000000 buckets=  65536 p_hot=0.70  time=0.3495  thr=5.72 Mops  speedup=1.00
+AGH            strong  80/20    skew  T= 8 ops= 2000000 buckets=  65536 p_hot=0.70  time=0.3078  thr=6.50 Mops  speedup=1.13
+AGH            strong  80/20    skew  T=16 ops= 2000000 buckets=  65536 p_hot=0.70  time=0.2908  thr=6.88 Mops  speedup=1.20
+AGH            strong  80/20    skew  T= 1 ops= 2000000 buckets=  65536 p_hot=0.90  time=0.6691  thr=2.99 Mops  speedup=0.52
+AGH            strong  80/20    skew  T= 2 ops= 2000000 buckets=  65536 p_hot=0.90  time=0.3992  thr=5.01 Mops  speedup=0.88
+AGH            strong  80/20    skew  T= 4 ops= 2000000 buckets=  65536 p_hot=0.90  time=0.3265  thr=6.13 Mops  speedup=1.07
+AGH            strong  80/20    skew  T= 8 ops= 2000000 buckets=  65536 p_hot=0.90  time=0.3112  thr=6.43 Mops  speedup=1.13
+AGH            strong  80/20    skew  T=16 ops= 2000000 buckets=  65536 p_hot=0.90  time=0.2888  thr=6.92 Mops  speedup=1.21
+AGH            strong  80/20    skew  T= 1 ops= 2000000 buckets=  65536 p_hot=0.99  time=0.6110  thr=3.27 Mops  speedup=0.57
+AGH            strong  80/20    skew  T= 2 ops= 2000000 buckets=  65536 p_hot=0.99  time=0.3643  thr=5.49 Mops  speedup=0.96
+AGH            strong  80/20    skew  T= 4 ops= 2000000 buckets=  65536 p_hot=0.99  time=0.3036  thr=6.59 Mops  speedup=1.16
+AGH            strong  80/20    skew  T= 8 ops= 2000000 buckets=  65536 p_hot=0.99  time=0.3141  thr=6.37 Mops  speedup=1.12
+AGH            strong  80/20    skew  T=16 ops= 2000000 buckets=  65536 p_hot=0.99  time=0.2881  thr=6.94 Mops  speedup=1.22
+AGH            strong  80/20 uniform  T= 1 ops= 2000000 buckets= 262144  time=0.3377  thr=5.92 Mops  speedup=0.31
+AGH            strong  80/20 uniform  T= 2 ops= 2000000 buckets= 262144  time=0.2657  thr=7.53 Mops  speedup=0.40
+AGH            strong  80/20 uniform  T= 4 ops= 2000000 buckets= 262144  time=0.1632  thr=12.25 Mops  speedup=0.65
+AGH            strong  80/20 uniform  T= 8 ops= 2000000 buckets= 262144  time=0.0984  thr=20.33 Mops  speedup=1.08
+AGH            strong  80/20 uniform  T=16 ops= 2000000 buckets= 262144  time=0.0594  thr=33.67 Mops  speedup=1.78
+AGH            strong  80/20    skew  T= 1 ops= 2000000 buckets= 262144 p_hot=0.70  time=0.4705  thr=4.25 Mops  speedup=0.30
+AGH            strong  80/20    skew  T= 2 ops= 2000000 buckets= 262144 p_hot=0.70  time=0.2724  thr=7.34 Mops  speedup=0.53
+AGH            strong  80/20    skew  T= 4 ops= 2000000 buckets= 262144 p_hot=0.70  time=0.2600  thr=7.69 Mops  speedup=0.55
+AGH            strong  80/20    skew  T= 8 ops= 2000000 buckets= 262144 p_hot=0.70  time=0.2799  thr=7.15 Mops  speedup=0.51
+AGH            strong  80/20    skew  T=16 ops= 2000000 buckets= 262144 p_hot=0.70  time=0.2655  thr=7.53 Mops  speedup=0.54
+AGH            strong  80/20    skew  T= 1 ops= 2000000 buckets= 262144 p_hot=0.90  time=0.4231  thr=4.73 Mops  speedup=0.34
+AGH            strong  80/20    skew  T= 2 ops= 2000000 buckets= 262144 p_hot=0.90  time=0.2488  thr=8.04 Mops  speedup=0.59
+AGH            strong  80/20    skew  T= 4 ops= 2000000 buckets= 262144 p_hot=0.90  time=0.2504  thr=7.99 Mops  speedup=0.58
+AGH            strong  80/20    skew  T= 8 ops= 2000000 buckets= 262144 p_hot=0.90  time=0.2776  thr=7.20 Mops  speedup=0.53
+AGH            strong  80/20    skew  T=16 ops= 2000000 buckets= 262144 p_hot=0.90  time=0.2635  thr=7.59 Mops  speedup=0.55
+AGH            strong  80/20    skew  T= 1 ops= 2000000 buckets= 262144 p_hot=0.99  time=0.4002  thr=5.00 Mops  speedup=0.36
+AGH            strong  80/20    skew  T= 2 ops= 2000000 buckets= 262144 p_hot=0.99  time=0.2366  thr=8.45 Mops  speedup=0.60
+AGH            strong  80/20    skew  T= 4 ops= 2000000 buckets= 262144 p_hot=0.99  time=0.2428  thr=8.24 Mops  speedup=0.59
+AGH            strong  80/20    skew  T= 8 ops= 2000000 buckets= 262144 p_hot=0.99  time=0.2794  thr=7.16 Mops  speedup=0.51
+AGH            strong  80/20    skew  T=16 ops= 2000000 buckets= 262144 p_hot=0.99  time=0.2636  thr=7.59 Mops  speedup=0.54
+AGH            strong  80/20 uniform  T= 1 ops= 2000000 buckets=1048576  time=0.3305  thr=6.05 Mops  speedup=0.18
+AGH            strong  80/20 uniform  T= 2 ops= 2000000 buckets=1048576  time=0.2347  thr=8.52 Mops  speedup=0.25
+AGH            strong  80/20 uniform  T= 4 ops= 2000000 buckets=1048576  time=0.1331  thr=15.02 Mops  speedup=0.44
+AGH            strong  80/20 uniform  T= 8 ops= 2000000 buckets=1048576  time=0.0700  thr=28.59 Mops  speedup=0.83
+AGH            strong  80/20 uniform  T=16 ops= 2000000 buckets=1048576  time=0.0449  thr=44.54 Mops  speedup=1.29
+AGH            strong  80/20    skew  T= 1 ops= 2000000 buckets=1048576 p_hot=0.70  time=0.4161  thr=4.81 Mops  speedup=0.24
+AGH            strong  80/20    skew  T= 2 ops= 2000000 buckets=1048576 p_hot=0.70  time=0.2447  thr=8.17 Mops  speedup=0.40
+AGH            strong  80/20    skew  T= 4 ops= 2000000 buckets=1048576 p_hot=0.70  time=0.2517  thr=7.95 Mops  speedup=0.39
+AGH            strong  80/20    skew  T= 8 ops= 2000000 buckets=1048576 p_hot=0.70  time=0.2730  thr=7.33 Mops  speedup=0.36
+AGH            strong  80/20    skew  T=16 ops= 2000000 buckets=1048576 p_hot=0.70  time=0.2529  thr=7.91 Mops  speedup=0.39
+AGH            strong  80/20    skew  T= 1 ops= 2000000 buckets=1048576 p_hot=0.90  time=0.3875  thr=5.16 Mops  speedup=0.24
+AGH            strong  80/20    skew  T= 2 ops= 2000000 buckets=1048576 p_hot=0.90  time=0.2318  thr=8.63 Mops  speedup=0.41
+AGH            strong  80/20    skew  T= 4 ops= 2000000 buckets=1048576 p_hot=0.90  time=0.2429  thr=8.23 Mops  speedup=0.39
+AGH            strong  80/20    skew  T= 8 ops= 2000000 buckets=1048576 p_hot=0.90  time=0.2794  thr=7.16 Mops  speedup=0.34
+AGH            strong  80/20    skew  T=16 ops= 2000000 buckets=1048576 p_hot=0.90  time=0.2508  thr=7.97 Mops  speedup=0.38
+AGH            strong  80/20    skew  T= 1 ops= 2000000 buckets=1048576 p_hot=0.99  time=0.3734  thr=5.36 Mops  speedup=0.27
+AGH            strong  80/20    skew  T= 2 ops= 2000000 buckets=1048576 p_hot=0.99  time=0.2249  thr=8.89 Mops  speedup=0.44
+AGH            strong  80/20    skew  T= 4 ops= 2000000 buckets=1048576 p_hot=0.99  time=0.2405  thr=8.31 Mops  speedup=0.41
+AGH            strong  80/20    skew  T= 8 ops= 2000000 buckets=1048576 p_hot=0.99  time=0.2787  thr=7.18 Mops  speedup=0.36
+AGH            strong  80/20    skew  T=16 ops= 2000000 buckets=1048576 p_hot=0.99  time=0.2534  thr=7.89 Mops  speedup=0.39
+AGH            strong  50/50 uniform  T= 1 ops= 2000000 buckets=  16384  time=3.3226  thr=0.60 Mops  speedup=0.74
+AGH            strong  50/50 uniform  T= 2 ops= 2000000 buckets=  16384  time=2.1789  thr=0.92 Mops  speedup=1.14
+AGH            strong  50/50 uniform  T= 4 ops= 2000000 buckets=  16384  time=1.2172  thr=1.64 Mops  speedup=2.03
+AGH            strong  50/50 uniform  T= 8 ops= 2000000 buckets=  16384  time=0.7028  thr=2.85 Mops  speedup=3.52
+AGH            strong  50/50 uniform  T=16 ops= 2000000 buckets=  16384  time=0.4840  thr=4.13 Mops  speedup=5.11
+AGH            strong  50/50    skew  T= 1 ops= 2000000 buckets=  16384 p_hot=0.70  time=3.4884  thr=0.57 Mops  speedup=0.76
+AGH            strong  50/50    skew  T= 2 ops= 2000000 buckets=  16384 p_hot=0.70  time=2.1184  thr=0.94 Mops  speedup=1.25
+AGH            strong  50/50    skew  T= 4 ops= 2000000 buckets=  16384 p_hot=0.70  time=1.2459  thr=1.61 Mops  speedup=2.13
+AGH            strong  50/50    skew  T= 8 ops= 2000000 buckets=  16384 p_hot=0.70  time=0.7601  thr=2.63 Mops  speedup=3.49
+AGH            strong  50/50    skew  T=16 ops= 2000000 buckets=  16384 p_hot=0.70  time=0.5942  thr=3.37 Mops  speedup=4.47
+AGH            strong  50/50    skew  T= 1 ops= 2000000 buckets=  16384 p_hot=0.90  time=3.1868  thr=0.63 Mops  speedup=0.83
+AGH            strong  50/50    skew  T= 2 ops= 2000000 buckets=  16384 p_hot=0.90  time=1.9969  thr=1.00 Mops  speedup=1.32
+AGH            strong  50/50    skew  T= 4 ops= 2000000 buckets=  16384 p_hot=0.90  time=1.1907  thr=1.68 Mops  speedup=2.22
+AGH            strong  50/50    skew  T= 8 ops= 2000000 buckets=  16384 p_hot=0.90  time=0.7406  thr=2.70 Mops  speedup=3.57
+AGH            strong  50/50    skew  T=16 ops= 2000000 buckets=  16384 p_hot=0.90  time=0.6122  thr=3.27 Mops  speedup=4.31
+AGH            strong  50/50    skew  T= 1 ops= 2000000 buckets=  16384 p_hot=0.99  time=3.0720  thr=0.65 Mops  speedup=0.86
+AGH            strong  50/50    skew  T= 2 ops= 2000000 buckets=  16384 p_hot=0.99  time=1.8816  thr=1.06 Mops  speedup=1.40
+AGH            strong  50/50    skew  T= 4 ops= 2000000 buckets=  16384 p_hot=0.99  time=1.1696  thr=1.71 Mops  speedup=2.26
+AGH            strong  50/50    skew  T= 8 ops= 2000000 buckets=  16384 p_hot=0.99  time=0.7471  thr=2.68 Mops  speedup=3.54
+AGH            strong  50/50    skew  T=16 ops= 2000000 buckets=  16384 p_hot=0.99  time=0.6077  thr=3.29 Mops  speedup=4.35
+AGH            strong  50/50 uniform  T= 1 ops= 2000000 buckets=  65536  time=0.9185  thr=2.18 Mops  speedup=0.49
+AGH            strong  50/50 uniform  T= 2 ops= 2000000 buckets=  65536  time=0.6919  thr=2.89 Mops  speedup=0.66
+AGH            strong  50/50 uniform  T= 4 ops= 2000000 buckets=  65536  time=0.3750  thr=5.33 Mops  speedup=1.21
+AGH            strong  50/50 uniform  T= 8 ops= 2000000 buckets=  65536  time=0.2448  thr=8.17 Mops  speedup=1.85
+AGH            strong  50/50 uniform  T=16 ops= 2000000 buckets=  65536  time=0.1687  thr=11.85 Mops  speedup=2.69
+AGH            strong  50/50    skew  T= 1 ops= 2000000 buckets=  65536 p_hot=0.70  time=0.9267  thr=2.16 Mops  speedup=0.56
+AGH            strong  50/50    skew  T= 2 ops= 2000000 buckets=  65536 p_hot=0.70  time=0.6523  thr=3.07 Mops  speedup=0.80
+AGH            strong  50/50    skew  T= 4 ops= 2000000 buckets=  65536 p_hot=0.70  time=0.4415  thr=4.53 Mops  speedup=1.18
+AGH            strong  50/50    skew  T= 8 ops= 2000000 buckets=  65536 p_hot=0.70  time=0.3653  thr=5.47 Mops  speedup=1.42
+AGH            strong  50/50    skew  T=16 ops= 2000000 buckets=  65536 p_hot=0.70  time=0.3648  thr=5.48 Mops  speedup=1.42
+AGH            strong  50/50    skew  T= 1 ops= 2000000 buckets=  65536 p_hot=0.90  time=0.8471  thr=2.36 Mops  speedup=0.61
+AGH            strong  50/50    skew  T= 2 ops= 2000000 buckets=  65536 p_hot=0.90  time=0.6230  thr=3.21 Mops  speedup=0.83
+AGH            strong  50/50    skew  T= 4 ops= 2000000 buckets=  65536 p_hot=0.90  time=0.4265  thr=4.69 Mops  speedup=1.22
+AGH            strong  50/50    skew  T= 8 ops= 2000000 buckets=  65536 p_hot=0.90  time=0.3657  thr=5.47 Mops  speedup=1.42
+AGH            strong  50/50    skew  T=16 ops= 2000000 buckets=  65536 p_hot=0.90  time=0.3581  thr=5.58 Mops  speedup=1.45
+AGH            strong  50/50    skew  T= 1 ops= 2000000 buckets=  65536 p_hot=0.99  time=0.8046  thr=2.49 Mops  speedup=0.64
+AGH            strong  50/50    skew  T= 2 ops= 2000000 buckets=  65536 p_hot=0.99  time=0.6019  thr=3.32 Mops  speedup=0.86
+AGH            strong  50/50    skew  T= 4 ops= 2000000 buckets=  65536 p_hot=0.99  time=0.4431  thr=4.51 Mops  speedup=1.16
+AGH            strong  50/50    skew  T= 8 ops= 2000000 buckets=  65536 p_hot=0.99  time=0.3668  thr=5.45 Mops  speedup=1.41
+AGH            strong  50/50    skew  T=16 ops= 2000000 buckets=  65536 p_hot=0.99  time=0.3566  thr=5.61 Mops  speedup=1.45
+AGH            strong  50/50 uniform  T= 1 ops= 2000000 buckets= 262144  time=0.3668  thr=5.45 Mops  speedup=0.41
+AGH            strong  50/50 uniform  T= 2 ops= 2000000 buckets= 262144  time=0.3309  thr=6.04 Mops  speedup=0.45
+AGH            strong  50/50 uniform  T= 4 ops= 2000000 buckets= 262144  time=0.2183  thr=9.16 Mops  speedup=0.69
+AGH            strong  50/50 uniform  T= 8 ops= 2000000 buckets= 262144  time=0.1314  thr=15.22 Mops  speedup=1.15
+AGH            strong  50/50 uniform  T=16 ops= 2000000 buckets= 262144  time=0.1088  thr=18.39 Mops  speedup=1.38
+AGH            strong  50/50    skew  T= 1 ops= 2000000 buckets= 262144 p_hot=0.70  time=0.4843  thr=4.13 Mops  speedup=0.44
+AGH            strong  50/50    skew  T= 2 ops= 2000000 buckets= 262144 p_hot=0.70  time=0.3502  thr=5.71 Mops  speedup=0.61
+AGH            strong  50/50    skew  T= 4 ops= 2000000 buckets= 262144 p_hot=0.70  time=0.3139  thr=6.37 Mops  speedup=0.68
+AGH            strong  50/50    skew  T= 8 ops= 2000000 buckets= 262144 p_hot=0.70  time=0.3249  thr=6.16 Mops  speedup=0.66
+AGH            strong  50/50    skew  T=16 ops= 2000000 buckets= 262144 p_hot=0.70  time=0.3268  thr=6.12 Mops  speedup=0.65
+AGH            strong  50/50    skew  T= 1 ops= 2000000 buckets= 262144 p_hot=0.90  time=0.4459  thr=4.49 Mops  speedup=0.43
+AGH            strong  50/50    skew  T= 2 ops= 2000000 buckets= 262144 p_hot=0.90  time=0.3309  thr=6.04 Mops  speedup=0.59
+AGH            strong  50/50    skew  T= 4 ops= 2000000 buckets= 262144 p_hot=0.90  time=0.3031  thr=6.60 Mops  speedup=0.64
+AGH            strong  50/50    skew  T= 8 ops= 2000000 buckets= 262144 p_hot=0.90  time=0.3263  thr=6.13 Mops  speedup=0.59
+AGH            strong  50/50    skew  T=16 ops= 2000000 buckets= 262144 p_hot=0.90  time=0.3146  thr=6.36 Mops  speedup=0.62
+AGH            strong  50/50    skew  T= 1 ops= 2000000 buckets= 262144 p_hot=0.99  time=0.4260  thr=4.69 Mops  speedup=0.47
+AGH            strong  50/50    skew  T= 2 ops= 2000000 buckets= 262144 p_hot=0.99  time=0.3242  thr=6.17 Mops  speedup=0.61
+AGH            strong  50/50    skew  T= 4 ops= 2000000 buckets= 262144 p_hot=0.99  time=0.2993  thr=6.68 Mops  speedup=0.66
+AGH            strong  50/50    skew  T= 8 ops= 2000000 buckets= 262144 p_hot=0.99  time=0.3271  thr=6.11 Mops  speedup=0.61
+AGH            strong  50/50    skew  T=16 ops= 2000000 buckets= 262144 p_hot=0.99  time=0.3139  thr=6.37 Mops  speedup=0.63
+AGH            strong  50/50 uniform  T= 1 ops= 2000000 buckets=1048576  time=0.3503  thr=5.71 Mops  speedup=0.26
+AGH            strong  50/50 uniform  T= 2 ops= 2000000 buckets=1048576  time=0.2780  thr=7.19 Mops  speedup=0.33
+AGH            strong  50/50 uniform  T= 4 ops= 2000000 buckets=1048576  time=0.1606  thr=12.45 Mops  speedup=0.57
+AGH            strong  50/50 uniform  T= 8 ops= 2000000 buckets=1048576  time=0.1031  thr=19.40 Mops  speedup=0.89
+AGH            strong  50/50 uniform  T=16 ops= 2000000 buckets=1048576  time=0.1061  thr=18.85 Mops  speedup=0.87
+AGH            strong  50/50    skew  T= 1 ops= 2000000 buckets=1048576 p_hot=0.70  time=0.4296  thr=4.66 Mops  speedup=0.31
+AGH            strong  50/50    skew  T= 2 ops= 2000000 buckets=1048576 p_hot=0.70  time=0.2868  thr=6.97 Mops  speedup=0.46
+AGH            strong  50/50    skew  T= 4 ops= 2000000 buckets=1048576 p_hot=0.70  time=0.2876  thr=6.95 Mops  speedup=0.46
+AGH            strong  50/50    skew  T= 8 ops= 2000000 buckets=1048576 p_hot=0.70  time=0.3191  thr=6.27 Mops  speedup=0.42
+AGH            strong  50/50    skew  T=16 ops= 2000000 buckets=1048576 p_hot=0.70  time=0.3038  thr=6.58 Mops  speedup=0.44
+AGH            strong  50/50    skew  T= 1 ops= 2000000 buckets=1048576 p_hot=0.90  time=0.4123  thr=4.85 Mops  speedup=0.31
+AGH            strong  50/50    skew  T= 2 ops= 2000000 buckets=1048576 p_hot=0.90  time=0.2784  thr=7.18 Mops  speedup=0.46
+AGH            strong  50/50    skew  T= 4 ops= 2000000 buckets=1048576 p_hot=0.90  time=0.2865  thr=6.98 Mops  speedup=0.45
+AGH            strong  50/50    skew  T= 8 ops= 2000000 buckets=1048576 p_hot=0.90  time=0.3197  thr=6.25 Mops  speedup=0.40
+AGH            strong  50/50    skew  T=16 ops= 2000000 buckets=1048576 p_hot=0.90  time=0.2998  thr=6.67 Mops  speedup=0.43
+AGH            strong  50/50    skew  T= 1 ops= 2000000 buckets=1048576 p_hot=0.99  time=0.4020  thr=4.98 Mops  speedup=0.32
+AGH            strong  50/50    skew  T= 2 ops= 2000000 buckets=1048576 p_hot=0.99  time=0.2745  thr=7.29 Mops  speedup=0.46
+AGH            strong  50/50    skew  T= 4 ops= 2000000 buckets=1048576 p_hot=0.99  time=0.2807  thr=7.12 Mops  speedup=0.45
+AGH            strong  50/50    skew  T= 8 ops= 2000000 buckets=1048576 p_hot=0.99  time=0.3195  thr=6.26 Mops  speedup=0.40
+AGH            strong  50/50    skew  T=16 ops= 2000000 buckets=1048576 p_hot=0.99  time=0.3000  thr=6.67 Mops  speedup=0.42
+AGH            weak  80/20 uniform  T= 1 ops=  250000 buckets=  16384  time=0.0329  thr=7.59 Mops  speedup=0.35
+AGH            weak  80/20 uniform  T= 2 ops=  500000 buckets=  16384  time=0.1227  thr=4.07 Mops  speedup=0.34
+AGH            weak  80/20 uniform  T= 4 ops= 1000000 buckets=  16384  time=0.2555  thr=3.91 Mops  speedup=1.04
+AGH            weak  80/20 uniform  T= 8 ops= 2000000 buckets=  16384  time=0.5077  thr=3.94 Mops  speedup=2.46
+AGH            weak  80/20 uniform  T=16 ops= 4000000 buckets=  16384  time=1.4296  thr=2.80 Mops  speedup=3.65
+AGH            weak  80/20    skew  T= 1 ops=  250000 buckets=  16384 p_hot=0.70  time=0.0386  thr=6.48 Mops  speedup=0.44
+AGH            weak  80/20    skew  T= 2 ops=  500000 buckets=  16384 p_hot=0.70  time=0.1025  thr=4.88 Mops  speedup=0.52
+AGH            weak  80/20    skew  T= 4 ops= 1000000 buckets=  16384 p_hot=0.70  time=0.2466  thr=4.06 Mops  speedup=1.22
+AGH            weak  80/20    skew  T= 8 ops= 2000000 buckets=  16384 p_hot=0.70  time=0.5802  thr=3.45 Mops  speedup=2.24
+AGH            weak  80/20    skew  T=16 ops= 4000000 buckets=  16384 p_hot=0.70  time=1.5890  thr=2.52 Mops  speedup=3.37
+AGH            weak  80/20    skew  T= 1 ops=  250000 buckets=  16384 p_hot=0.90  time=0.0358  thr=6.98 Mops  speedup=0.46
+AGH            weak  80/20    skew  T= 2 ops=  500000 buckets=  16384 p_hot=0.90  time=0.0886  thr=5.64 Mops  speedup=0.61
+AGH            weak  80/20    skew  T= 4 ops= 1000000 buckets=  16384 p_hot=0.90  time=0.2195  thr=4.56 Mops  speedup=1.33
+AGH            weak  80/20    skew  T= 8 ops= 2000000 buckets=  16384 p_hot=0.90  time=0.5711  thr=3.50 Mops  speedup=2.27
+AGH            weak  80/20    skew  T=16 ops= 4000000 buckets=  16384 p_hot=0.90  time=1.5791  thr=2.53 Mops  speedup=3.38
+AGH            weak  80/20    skew  T= 1 ops=  250000 buckets=  16384 p_hot=0.99  time=0.0338  thr=7.39 Mops  speedup=0.49
+AGH            weak  80/20    skew  T= 2 ops=  500000 buckets=  16384 p_hot=0.99  time=0.0819  thr=6.10 Mops  speedup=0.63
+AGH            weak  80/20    skew  T= 4 ops= 1000000 buckets=  16384 p_hot=0.99  time=0.2095  thr=4.77 Mops  speedup=1.39
+AGH            weak  80/20    skew  T= 8 ops= 2000000 buckets=  16384 p_hot=0.99  time=0.5660  thr=3.53 Mops  speedup=2.28
+AGH            weak  80/20    skew  T=16 ops= 4000000 buckets=  16384 p_hot=0.99  time=1.5483  thr=2.58 Mops  speedup=3.42
+AGH            weak  80/20 uniform  T= 1 ops=  250000 buckets=  65536  time=0.0259  thr=9.63 Mops  speedup=0.29
+AGH            weak  80/20 uniform  T= 2 ops=  500000 buckets=  65536  time=0.0612  thr=8.17 Mops  speedup=0.35
+AGH            weak  80/20 uniform  T= 4 ops= 1000000 buckets=  65536  time=0.1077  thr=9.28 Mops  speedup=0.72
+AGH            weak  80/20 uniform  T= 8 ops= 2000000 buckets=  65536  time=0.1873  thr=10.68 Mops  speedup=1.51
+AGH            weak  80/20 uniform  T=16 ops= 4000000 buckets=  65536  time=0.4096  thr=9.77 Mops  speedup=3.10
+AGH            weak  80/20    skew  T= 1 ops=  250000 buckets=  65536 p_hot=0.70  time=0.0331  thr=7.56 Mops  speedup=0.39
+AGH            weak  80/20    skew  T= 2 ops=  500000 buckets=  65536 p_hot=0.70  time=0.0578  thr=8.65 Mops  speedup=0.58
+AGH            weak  80/20    skew  T= 4 ops= 1000000 buckets=  65536 p_hot=0.70  time=0.1341  thr=7.45 Mops  speedup=0.76
+AGH            weak  80/20    skew  T= 8 ops= 2000000 buckets=  65536 p_hot=0.70  time=0.3123  thr=6.40 Mops  speedup=1.07
+AGH            weak  80/20    skew  T=16 ops= 4000000 buckets=  65536 p_hot=0.70  time=0.7327  thr=5.46 Mops  speedup=1.87
+AGH            weak  80/20    skew  T= 1 ops=  250000 buckets=  65536 p_hot=0.90  time=0.0313  thr=7.99 Mops  speedup=0.40
+AGH            weak  80/20    skew  T= 2 ops=  500000 buckets=  65536 p_hot=0.90  time=0.0525  thr=9.53 Mops  speedup=0.61
+AGH            weak  80/20    skew  T= 4 ops= 1000000 buckets=  65536 p_hot=0.90  time=0.1241  thr=8.06 Mops  speedup=0.80
+AGH            weak  80/20    skew  T= 8 ops= 2000000 buckets=  65536 p_hot=0.90  time=0.3144  thr=6.36 Mops  speedup=1.08
+AGH            weak  80/20    skew  T=16 ops= 4000000 buckets=  65536 p_hot=0.90  time=0.7228  thr=5.53 Mops  speedup=1.92
+AGH            weak  80/20    skew  T= 1 ops=  250000 buckets=  65536 p_hot=0.99  time=0.0301  thr=8.31 Mops  speedup=0.41
+AGH            weak  80/20    skew  T= 2 ops=  500000 buckets=  65536 p_hot=0.99  time=0.0500  thr=10.01 Mops  speedup=0.63
+AGH            weak  80/20    skew  T= 4 ops= 1000000 buckets=  65536 p_hot=0.99  time=0.1222  thr=8.18 Mops  speedup=0.81
+AGH            weak  80/20    skew  T= 8 ops= 2000000 buckets=  65536 p_hot=0.99  time=0.3154  thr=6.34 Mops  speedup=1.08
+AGH            weak  80/20    skew  T=16 ops= 4000000 buckets=  65536 p_hot=0.99  time=0.7304  thr=5.48 Mops  speedup=1.90
+AGH            weak  80/20 uniform  T= 1 ops=  250000 buckets= 262144  time=0.0306  thr=8.17 Mops  speedup=0.21
+AGH            weak  80/20 uniform  T= 2 ops=  500000 buckets= 262144  time=0.0542  thr=9.23 Mops  speedup=0.25
+AGH            weak  80/20 uniform  T= 4 ops= 1000000 buckets= 262144  time=0.0743  thr=13.46 Mops  speedup=0.46
+AGH            weak  80/20 uniform  T= 8 ops= 2000000 buckets= 262144  time=0.1059  thr=18.89 Mops  speedup=0.94
+AGH            weak  80/20 uniform  T=16 ops= 4000000 buckets= 262144  time=0.1817  thr=22.01 Mops  speedup=1.73
+AGH            weak  80/20    skew  T= 1 ops=  250000 buckets= 262144 p_hot=0.70  time=0.0365  thr=6.85 Mops  speedup=0.33
+AGH            weak  80/20    skew  T= 2 ops=  500000 buckets= 262144 p_hot=0.70  time=0.0515  thr=9.70 Mops  speedup=0.49
+AGH            weak  80/20    skew  T= 4 ops= 1000000 buckets= 262144 p_hot=0.70  time=0.1219  thr=8.20 Mops  speedup=0.47
+AGH            weak  80/20    skew  T= 8 ops= 2000000 buckets= 262144 p_hot=0.70  time=0.2794  thr=7.16 Mops  speedup=0.52
+AGH            weak  80/20    skew  T=16 ops= 4000000 buckets= 262144 p_hot=0.70  time=0.5526  thr=7.24 Mops  speedup=0.73
+AGH            weak  80/20    skew  T= 1 ops=  250000 buckets= 262144 p_hot=0.90  time=0.0330  thr=7.58 Mops  speedup=0.34
+AGH            weak  80/20    skew  T= 2 ops=  500000 buckets= 262144 p_hot=0.90  time=0.0479  thr=10.44 Mops  speedup=0.50
+AGH            weak  80/20    skew  T= 4 ops= 1000000 buckets= 262144 p_hot=0.90  time=0.1172  thr=8.53 Mops  speedup=0.47
+AGH            weak  80/20    skew  T= 8 ops= 2000000 buckets= 262144 p_hot=0.90  time=0.2787  thr=7.18 Mops  speedup=0.50
+AGH            weak  80/20    skew  T=16 ops= 4000000 buckets= 262144 p_hot=0.90  time=0.5516  thr=7.25 Mops  speedup=0.71
+AGH            weak  80/20    skew  T= 1 ops=  250000 buckets= 262144 p_hot=0.99  time=0.0314  thr=7.97 Mops  speedup=0.36
+AGH            weak  80/20    skew  T= 2 ops=  500000 buckets= 262144 p_hot=0.99  time=0.0465  thr=10.76 Mops  speedup=0.51
+AGH            weak  80/20    skew  T= 4 ops= 1000000 buckets= 262144 p_hot=0.99  time=0.1151  thr=8.69 Mops  speedup=0.48
+AGH            weak  80/20    skew  T= 8 ops= 2000000 buckets= 262144 p_hot=0.99  time=0.2790  thr=7.17 Mops  speedup=0.50
+AGH            weak  80/20    skew  T=16 ops= 4000000 buckets= 262144 p_hot=0.99  time=0.5517  thr=7.25 Mops  speedup=0.72
+AGH            weak  80/20 uniform  T= 1 ops=  250000 buckets=1048576  time=0.0362  thr=6.91 Mops  speedup=0.18
+AGH            weak  80/20 uniform  T= 2 ops=  500000 buckets=1048576  time=0.0602  thr=8.31 Mops  speedup=0.21
+AGH            weak  80/20 uniform  T= 4 ops= 1000000 buckets=1048576  time=0.0705  thr=14.19 Mops  speedup=0.36
+AGH            weak  80/20 uniform  T= 8 ops= 2000000 buckets=1048576  time=0.0742  thr=26.94 Mops  speedup=0.74
+AGH            weak  80/20 uniform  T=16 ops= 4000000 buckets=1048576  time=0.1079  thr=37.07 Mops  speedup=1.42
+AGH            weak  80/20    skew  T= 1 ops=  250000 buckets=1048576 p_hot=0.70  time=0.0410  thr=6.10 Mops  speedup=0.29
+AGH            weak  80/20    skew  T= 2 ops=  500000 buckets=1048576 p_hot=0.70  time=0.0539  thr=9.28 Mops  speedup=0.44
+AGH            weak  80/20    skew  T= 4 ops= 1000000 buckets=1048576 p_hot=0.70  time=0.1206  thr=8.29 Mops  speedup=0.39
+AGH            weak  80/20    skew  T= 8 ops= 2000000 buckets=1048576 p_hot=0.70  time=0.2744  thr=7.29 Mops  speedup=0.37
+AGH            weak  80/20    skew  T=16 ops= 4000000 buckets=1048576 p_hot=0.70  time=0.5263  thr=7.60 Mops  speedup=0.43
+AGH            weak  80/20    skew  T= 1 ops=  250000 buckets=1048576 p_hot=0.90  time=0.0373  thr=6.70 Mops  speedup=0.30
+AGH            weak  80/20    skew  T= 2 ops=  500000 buckets=1048576 p_hot=0.90  time=0.0495  thr=10.10 Mops  speedup=0.46
+AGH            weak  80/20    skew  T= 4 ops= 1000000 buckets=1048576 p_hot=0.90  time=0.1164  thr=8.59 Mops  speedup=0.39
+AGH            weak  80/20    skew  T= 8 ops= 2000000 buckets=1048576 p_hot=0.90  time=0.2745  thr=7.29 Mops  speedup=0.35
+AGH            weak  80/20    skew  T=16 ops= 4000000 buckets=1048576 p_hot=0.90  time=0.5231  thr=7.65 Mops  speedup=0.45
+AGH            weak  80/20    skew  T= 1 ops=  250000 buckets=1048576 p_hot=0.99  time=0.0353  thr=7.08 Mops  speedup=0.32
+AGH            weak  80/20    skew  T= 2 ops=  500000 buckets=1048576 p_hot=0.99  time=0.0473  thr=10.57 Mops  speedup=0.47
+AGH            weak  80/20    skew  T= 4 ops= 1000000 buckets=1048576 p_hot=0.99  time=0.1154  thr=8.67 Mops  speedup=0.39
+AGH            weak  80/20    skew  T= 8 ops= 2000000 buckets=1048576 p_hot=0.99  time=0.2763  thr=7.24 Mops  speedup=0.34
+AGH            weak  80/20    skew  T=16 ops= 4000000 buckets=1048576 p_hot=0.99  time=0.5234  thr=7.64 Mops  speedup=0.44
+AGH            weak  50/50 uniform  T= 1 ops=  250000 buckets=  16384  time=0.0430  thr=5.82 Mops  speedup=0.46
+AGH            weak  50/50 uniform  T= 2 ops=  500000 buckets=  16384  time=0.1617  thr=3.09 Mops  speedup=0.59
+AGH            weak  50/50 uniform  T= 4 ops= 1000000 buckets=  16384  time=0.3563  thr=2.81 Mops  speedup=1.65
+AGH            weak  50/50 uniform  T= 8 ops= 2000000 buckets=  16384  time=0.7547  thr=2.65 Mops  speedup=3.33
+AGH            weak  50/50 uniform  T=16 ops= 4000000 buckets=  16384  time=1.9850  thr=2.02 Mops  speedup=5.54
+AGH            weak  50/50    skew  T= 1 ops=  250000 buckets=  16384 p_hot=0.70  time=0.0513  thr=4.87 Mops  speedup=0.55
+AGH            weak  50/50    skew  T= 2 ops=  500000 buckets=  16384 p_hot=0.70  time=0.1544  thr=3.24 Mops  speedup=0.76
+AGH            weak  50/50    skew  T= 4 ops= 1000000 buckets=  16384 p_hot=0.70  time=0.3891  thr=2.57 Mops  speedup=1.48
+AGH            weak  50/50    skew  T= 8 ops= 2000000 buckets=  16384 p_hot=0.70  time=0.8085  thr=2.47 Mops  speedup=3.20
+AGH            weak  50/50    skew  T=16 ops= 4000000 buckets=  16384 p_hot=0.70  time=2.0910  thr=1.91 Mops  speedup=5.31
+AGH            weak  50/50    skew  T= 1 ops=  250000 buckets=  16384 p_hot=0.90  time=0.0449  thr=5.57 Mops  speedup=0.57
+AGH            weak  50/50    skew  T= 2 ops=  500000 buckets=  16384 p_hot=0.90  time=0.1426  thr=3.51 Mops  speedup=0.75
+AGH            weak  50/50    skew  T= 4 ops= 1000000 buckets=  16384 p_hot=0.90  time=0.3369  thr=2.97 Mops  speedup=1.70
+AGH            weak  50/50    skew  T= 8 ops= 2000000 buckets=  16384 p_hot=0.90  time=0.7961  thr=2.51 Mops  speedup=3.27
+AGH            weak  50/50    skew  T=16 ops= 4000000 buckets=  16384 p_hot=0.90  time=2.0814  thr=1.92 Mops  speedup=5.36
+AGH            weak  50/50    skew  T= 1 ops=  250000 buckets=  16384 p_hot=0.99  time=0.0442  thr=5.66 Mops  speedup=0.58
+AGH            weak  50/50    skew  T= 2 ops=  500000 buckets=  16384 p_hot=0.99  time=0.1376  thr=3.63 Mops  speedup=0.77
+AGH            weak  50/50    skew  T= 4 ops= 1000000 buckets=  16384 p_hot=0.99  time=0.3296  thr=3.03 Mops  speedup=1.73
+AGH            weak  50/50    skew  T= 8 ops= 2000000 buckets=  16384 p_hot=0.99  time=0.7874  thr=2.54 Mops  speedup=3.31
+AGH            weak  50/50    skew  T=16 ops= 4000000 buckets=  16384 p_hot=0.99  time=2.0659  thr=1.94 Mops  speedup=5.39
+AGH            weak  50/50 uniform  T= 1 ops=  250000 buckets=  65536  time=0.0309  thr=8.10 Mops  speedup=0.41
+AGH            weak  50/50 uniform  T= 2 ops=  500000 buckets=  65536  time=0.0731  thr=6.84 Mops  speedup=0.51
+AGH            weak  50/50 uniform  T= 4 ops= 1000000 buckets=  65536  time=0.1481  thr=6.75 Mops  speedup=0.83
+AGH            weak  50/50 uniform  T= 8 ops= 2000000 buckets=  65536  time=0.2540  thr=7.87 Mops  speedup=1.87
+AGH            weak  50/50 uniform  T=16 ops= 4000000 buckets=  65536  time=0.5530  thr=7.23 Mops  speedup=4.37
+AGH            weak  50/50    skew  T= 1 ops=  250000 buckets=  65536 p_hot=0.70  time=0.0377  thr=6.63 Mops  speedup=0.49
+AGH            weak  50/50    skew  T= 2 ops=  500000 buckets=  65536 p_hot=0.70  time=0.0710  thr=7.04 Mops  speedup=0.71
+AGH            weak  50/50    skew  T= 4 ops= 1000000 buckets=  65536 p_hot=0.70  time=0.1693  thr=5.91 Mops  speedup=0.90
+AGH            weak  50/50    skew  T= 8 ops= 2000000 buckets=  65536 p_hot=0.70  time=0.3731  thr=5.36 Mops  speedup=1.47
+AGH            weak  50/50    skew  T=16 ops= 4000000 buckets=  65536 p_hot=0.70  time=0.8854  thr=4.52 Mops  speedup=2.86
+AGH            weak  50/50    skew  T= 1 ops=  250000 buckets=  65536 p_hot=0.90  time=0.0360  thr=6.95 Mops  speedup=0.50
+AGH            weak  50/50    skew  T= 2 ops=  500000 buckets=  65536 p_hot=0.90  time=0.0682  thr=7.33 Mops  speedup=0.73
+AGH            weak  50/50    skew  T= 4 ops= 1000000 buckets=  65536 p_hot=0.90  time=0.1689  thr=5.92 Mops  speedup=0.90
+AGH            weak  50/50    skew  T= 8 ops= 2000000 buckets=  65536 p_hot=0.90  time=0.3771  thr=5.30 Mops  speedup=1.43
+AGH            weak  50/50    skew  T=16 ops= 4000000 buckets=  65536 p_hot=0.90  time=0.8871  thr=4.51 Mops  speedup=2.85
+AGH            weak  50/50    skew  T= 1 ops=  250000 buckets=  65536 p_hot=0.99  time=0.0344  thr=7.27 Mops  speedup=0.51
+AGH            weak  50/50    skew  T= 2 ops=  500000 buckets=  65536 p_hot=0.99  time=0.0657  thr=7.61 Mops  speedup=0.74
+AGH            weak  50/50    skew  T= 4 ops= 1000000 buckets=  65536 p_hot=0.99  time=0.1586  thr=6.30 Mops  speedup=0.93
+AGH            weak  50/50    skew  T= 8 ops= 2000000 buckets=  65536 p_hot=0.99  time=0.3786  thr=5.28 Mops  speedup=1.43
+AGH            weak  50/50    skew  T=16 ops= 4000000 buckets=  65536 p_hot=0.99  time=0.8878  thr=4.51 Mops  speedup=2.85
+AGH            weak  50/50 uniform  T= 1 ops=  250000 buckets= 262144  time=0.0356  thr=7.03 Mops  speedup=0.30
+AGH            weak  50/50 uniform  T= 2 ops=  500000 buckets= 262144  time=0.0619  thr=8.08 Mops  speedup=0.36
+AGH            weak  50/50 uniform  T= 4 ops= 1000000 buckets= 262144  time=0.0840  thr=11.91 Mops  speedup=0.65
+AGH            weak  50/50 uniform  T= 8 ops= 2000000 buckets= 262144  time=0.1343  thr=14.89 Mops  speedup=1.17
+AGH            weak  50/50 uniform  T=16 ops= 4000000 buckets= 262144  time=0.2365  thr=16.91 Mops  speedup=2.20
+AGH            weak  50/50    skew  T= 1 ops=  250000 buckets= 262144 p_hot=0.70  time=0.0416  thr=6.01 Mops  speedup=0.39
+AGH            weak  50/50    skew  T= 2 ops=  500000 buckets= 262144 p_hot=0.70  time=0.0630  thr=7.94 Mops  speedup=0.53
+AGH            weak  50/50    skew  T= 4 ops= 1000000 buckets= 262144 p_hot=0.70  time=0.1441  thr=6.94 Mops  speedup=0.54
+AGH            weak  50/50    skew  T= 8 ops= 2000000 buckets= 262144 p_hot=0.70  time=0.3295  thr=6.07 Mops  speedup=0.66
+AGH            weak  50/50    skew  T=16 ops= 4000000 buckets= 262144 p_hot=0.70  time=0.6638  thr=6.03 Mops  speedup=0.93
+AGH            weak  50/50    skew  T= 1 ops=  250000 buckets= 262144 p_hot=0.90  time=0.0389  thr=6.43 Mops  speedup=0.40
+AGH            weak  50/50    skew  T= 2 ops=  500000 buckets= 262144 p_hot=0.90  time=0.0602  thr=8.31 Mops  speedup=0.53
+AGH            weak  50/50    skew  T= 4 ops= 1000000 buckets= 262144 p_hot=0.90  time=0.1397  thr=7.16 Mops  speedup=0.54
+AGH            weak  50/50    skew  T= 8 ops= 2000000 buckets= 262144 p_hot=0.90  time=0.3279  thr=6.10 Mops  speedup=0.63
+AGH            weak  50/50    skew  T=16 ops= 4000000 buckets= 262144 p_hot=0.90  time=0.6571  thr=6.09 Mops  speedup=0.94
+AGH            weak  50/50    skew  T= 1 ops=  250000 buckets= 262144 p_hot=0.99  time=0.0378  thr=6.61 Mops  speedup=0.41
+AGH            weak  50/50    skew  T= 2 ops=  500000 buckets= 262144 p_hot=0.99  time=0.0593  thr=8.43 Mops  speedup=0.53
+AGH            weak  50/50    skew  T= 4 ops= 1000000 buckets= 262144 p_hot=0.99  time=0.1391  thr=7.19 Mops  speedup=0.53
+AGH            weak  50/50    skew  T= 8 ops= 2000000 buckets= 262144 p_hot=0.99  time=0.3271  thr=6.12 Mops  speedup=0.63
+AGH            weak  50/50    skew  T=16 ops= 4000000 buckets= 262144 p_hot=0.99  time=0.6559  thr=6.10 Mops  speedup=0.94
+AGH            weak  50/50 uniform  T= 1 ops=  250000 buckets=1048576  time=0.0407  thr=6.15 Mops  speedup=0.26
+AGH            weak  50/50 uniform  T= 2 ops=  500000 buckets=1048576  time=0.0645  thr=7.75 Mops  speedup=0.33
+AGH            weak  50/50 uniform  T= 4 ops= 1000000 buckets=1048576  time=0.0770  thr=12.99 Mops  speedup=0.55
+AGH            weak  50/50 uniform  T= 8 ops= 2000000 buckets=1048576  time=0.1069  thr=18.72 Mops  speedup=0.83
+AGH            weak  50/50 uniform  T=16 ops= 4000000 buckets=1048576  time=0.2152  thr=18.58 Mops  speedup=1.18
+AGH            weak  50/50    skew  T= 1 ops=  250000 buckets=1048576 p_hot=0.70  time=0.0463  thr=5.40 Mops  speedup=0.35
+AGH            weak  50/50    skew  T= 2 ops=  500000 buckets=1048576 p_hot=0.70  time=0.0612  thr=8.18 Mops  speedup=0.52
+AGH            weak  50/50    skew  T= 4 ops= 1000000 buckets=1048576 p_hot=0.70  time=0.1381  thr=7.24 Mops  speedup=0.46
+AGH            weak  50/50    skew  T= 8 ops= 2000000 buckets=1048576 p_hot=0.70  time=0.3183  thr=6.28 Mops  speedup=0.43
+AGH            weak  50/50    skew  T=16 ops= 4000000 buckets=1048576 p_hot=0.70  time=0.6216  thr=6.44 Mops  speedup=0.55
+AGH            weak  50/50    skew  T= 1 ops=  250000 buckets=1048576 p_hot=0.90  time=0.0439  thr=5.69 Mops  speedup=0.35
+AGH            weak  50/50    skew  T= 2 ops=  500000 buckets=1048576 p_hot=0.90  time=0.0588  thr=8.51 Mops  speedup=0.52
+AGH            weak  50/50    skew  T= 4 ops= 1000000 buckets=1048576 p_hot=0.90  time=0.1360  thr=7.35 Mops  speedup=0.45
+AGH            weak  50/50    skew  T= 8 ops= 2000000 buckets=1048576 p_hot=0.90  time=0.3207  thr=6.24 Mops  speedup=0.41
+AGH            weak  50/50    skew  T=16 ops= 4000000 buckets=1048576 p_hot=0.90  time=0.6166  thr=6.49 Mops  speedup=0.54
+AGH            weak  50/50    skew  T= 1 ops=  250000 buckets=1048576 p_hot=0.99  time=0.0428  thr=5.85 Mops  speedup=0.35
+AGH            weak  50/50    skew  T= 2 ops=  500000 buckets=1048576 p_hot=0.99  time=0.0577  thr=8.67 Mops  speedup=0.52
+AGH            weak  50/50    skew  T= 4 ops= 1000000 buckets=1048576 p_hot=0.99  time=0.1341  thr=7.46 Mops  speedup=0.46
+AGH            weak  50/50    skew  T= 8 ops= 2000000 buckets=1048576 p_hot=0.99  time=0.3211  thr=6.23 Mops  speedup=0.41
+AGH            weak  50/50    skew  T=16 ops= 4000000 buckets=1048576 p_hot=0.99  time=0.6128  thr=6.53 Mops  speedup=0.53
+CSV_RESULTS_BEGIN
+impl,mode,mix,dist,threads,ops,bucket_count,read_ratio,p_hot,time_s,throughput_mops,speedup,seq_baseline_s
+AGH,strong,80/20,uniform,1,2000000,16384,0.80,0.00,2.819312,0.709,0.495,1.394852
+AGH,strong,80/20,uniform,2,2000000,16384,0.80,0.00,1.194439,1.674,1.168,1.394852
+AGH,strong,80/20,uniform,4,2000000,16384,0.80,0.00,0.693756,2.883,2.011,1.394852
+AGH,strong,80/20,uniform,8,2000000,16384,0.80,0.00,0.408219,4.899,3.417,1.394852
+AGH,strong,80/20,uniform,16,2000000,16384,0.80,0.00,0.236085,8.472,5.908,1.394852
+AGH,strong,80/20,skew,1,2000000,16384,0.80,0.70,2.465252,0.811,0.542,1.335932
+AGH,strong,80/20,skew,2,2000000,16384,0.80,0.70,1.369039,1.461,0.976,1.335932
+AGH,strong,80/20,skew,4,2000000,16384,0.80,0.70,0.776195,2.577,1.721,1.335932
+AGH,strong,80/20,skew,8,2000000,16384,0.80,0.70,0.567942,3.521,2.352,1.335932
+AGH,strong,80/20,skew,16,2000000,16384,0.80,0.70,0.486598,4.110,2.745,1.335932
+AGH,strong,80/20,skew,1,2000000,16384,0.80,0.90,1.985705,1.007,0.689,1.367362
+AGH,strong,80/20,skew,2,2000000,16384,0.80,0.90,1.123525,1.780,1.217,1.367362
+AGH,strong,80/20,skew,4,2000000,16384,0.80,0.90,0.735822,2.718,1.858,1.367362
+AGH,strong,80/20,skew,8,2000000,16384,0.80,0.90,0.583938,3.425,2.342,1.367362
+AGH,strong,80/20,skew,16,2000000,16384,0.80,0.90,0.488401,4.095,2.800,1.367362
+AGH,strong,80/20,skew,1,2000000,16384,0.80,0.99,1.756198,1.139,0.777,1.363948
+AGH,strong,80/20,skew,2,2000000,16384,0.80,0.99,1.023066,1.955,1.333,1.363948
+AGH,strong,80/20,skew,4,2000000,16384,0.80,0.99,0.667321,2.997,2.044,1.363948
+AGH,strong,80/20,skew,8,2000000,16384,0.80,0.99,0.557178,3.590,2.448,1.363948
+AGH,strong,80/20,skew,16,2000000,16384,0.80,0.99,0.484256,4.130,2.817,1.363948
+AGH,strong,80/20,uniform,1,2000000,65536,0.80,0.00,0.725922,2.755,0.405,0.293984
+AGH,strong,80/20,uniform,2,2000000,65536,0.80,0.00,0.520436,3.843,0.565,0.293984
+AGH,strong,80/20,uniform,4,2000000,65536,0.80,0.00,0.314616,6.357,0.934,0.293984
+AGH,strong,80/20,uniform,8,2000000,65536,0.80,0.00,0.183735,10.885,1.600,0.293984
+AGH,strong,80/20,uniform,16,2000000,65536,0.80,0.00,0.114463,17.473,2.568,0.293984
+AGH,strong,80/20,skew,1,2000000,65536,0.80,0.70,0.806177,2.481,0.432,0.348506
+AGH,strong,80/20,skew,2,2000000,65536,0.80,0.70,0.456400,4.382,0.764,0.348506
+AGH,strong,80/20,skew,4,2000000,65536,0.80,0.70,0.349517,5.722,0.997,0.348506
+AGH,strong,80/20,skew,8,2000000,65536,0.80,0.70,0.307822,6.497,1.132,0.348506
+AGH,strong,80/20,skew,16,2000000,65536,0.80,0.70,0.290753,6.879,1.199,0.348506
+AGH,strong,80/20,skew,1,2000000,65536,0.80,0.90,0.669119,2.989,0.523,0.350132
+AGH,strong,80/20,skew,2,2000000,65536,0.80,0.90,0.399238,5.010,0.877,0.350132
+AGH,strong,80/20,skew,4,2000000,65536,0.80,0.90,0.326472,6.126,1.072,0.350132
+AGH,strong,80/20,skew,8,2000000,65536,0.80,0.90,0.311164,6.427,1.125,0.350132
+AGH,strong,80/20,skew,16,2000000,65536,0.80,0.90,0.288846,6.924,1.212,0.350132
+AGH,strong,80/20,skew,1,2000000,65536,0.80,0.99,0.611008,3.273,0.574,0.350956
+AGH,strong,80/20,skew,2,2000000,65536,0.80,0.99,0.364322,5.490,0.963,0.350956
+AGH,strong,80/20,skew,4,2000000,65536,0.80,0.99,0.303587,6.588,1.156,0.350956
+AGH,strong,80/20,skew,8,2000000,65536,0.80,0.99,0.314110,6.367,1.117,0.350956
+AGH,strong,80/20,skew,16,2000000,65536,0.80,0.99,0.288076,6.943,1.218,0.350956
+AGH,strong,80/20,uniform,1,2000000,262144,0.80,0.00,0.337708,5.922,0.314,0.105882
+AGH,strong,80/20,uniform,2,2000000,262144,0.80,0.00,0.265703,7.527,0.398,0.105882
+AGH,strong,80/20,uniform,4,2000000,262144,0.80,0.00,0.163229,12.253,0.649,0.105882
+AGH,strong,80/20,uniform,8,2000000,262144,0.80,0.00,0.098378,20.330,1.076,0.105882
+AGH,strong,80/20,uniform,16,2000000,262144,0.80,0.00,0.059398,33.671,1.783,0.105882
+AGH,strong,80/20,skew,1,2000000,262144,0.80,0.70,0.470518,4.251,0.304,0.143210
+AGH,strong,80/20,skew,2,2000000,262144,0.80,0.70,0.272365,7.343,0.526,0.143210
+AGH,strong,80/20,skew,4,2000000,262144,0.80,0.70,0.260038,7.691,0.551,0.143210
+AGH,strong,80/20,skew,8,2000000,262144,0.80,0.70,0.279912,7.145,0.512,0.143210
+AGH,strong,80/20,skew,16,2000000,262144,0.80,0.70,0.265465,7.534,0.539,0.143210
+AGH,strong,80/20,skew,1,2000000,262144,0.80,0.90,0.423088,4.727,0.345,0.145784
+AGH,strong,80/20,skew,2,2000000,262144,0.80,0.90,0.248839,8.037,0.586,0.145784
+AGH,strong,80/20,skew,4,2000000,262144,0.80,0.90,0.250410,7.987,0.582,0.145784
+AGH,strong,80/20,skew,8,2000000,262144,0.80,0.90,0.277586,7.205,0.525,0.145784
+AGH,strong,80/20,skew,16,2000000,262144,0.80,0.90,0.263549,7.589,0.553,0.145784
+AGH,strong,80/20,skew,1,2000000,262144,0.80,0.99,0.400209,4.997,0.356,0.142490
+AGH,strong,80/20,skew,2,2000000,262144,0.80,0.99,0.236603,8.453,0.602,0.142490
+AGH,strong,80/20,skew,4,2000000,262144,0.80,0.99,0.242817,8.237,0.587,0.142490
+AGH,strong,80/20,skew,8,2000000,262144,0.80,0.99,0.279438,7.157,0.510,0.142490
+AGH,strong,80/20,skew,16,2000000,262144,0.80,0.99,0.263647,7.586,0.540,0.142490
+AGH,strong,80/20,uniform,1,2000000,1048576,0.80,0.00,0.330481,6.052,0.175,0.057964
+AGH,strong,80/20,uniform,2,2000000,1048576,0.80,0.00,0.234746,8.520,0.247,0.057964
+AGH,strong,80/20,uniform,4,2000000,1048576,0.80,0.00,0.133118,15.024,0.435,0.057964
+AGH,strong,80/20,uniform,8,2000000,1048576,0.80,0.00,0.069961,28.587,0.829,0.057964
+AGH,strong,80/20,uniform,16,2000000,1048576,0.80,0.00,0.044901,44.542,1.291,0.057964
+AGH,strong,80/20,skew,1,2000000,1048576,0.80,0.70,0.416115,4.806,0.237,0.098735
+AGH,strong,80/20,skew,2,2000000,1048576,0.80,0.70,0.244711,8.173,0.403,0.098735
+AGH,strong,80/20,skew,4,2000000,1048576,0.80,0.70,0.251703,7.946,0.392,0.098735
+AGH,strong,80/20,skew,8,2000000,1048576,0.80,0.70,0.272987,7.326,0.362,0.098735
+AGH,strong,80/20,skew,16,2000000,1048576,0.80,0.70,0.252855,7.910,0.390,0.098735
+AGH,strong,80/20,skew,1,2000000,1048576,0.80,0.90,0.387481,5.162,0.244,0.094491
+AGH,strong,80/20,skew,2,2000000,1048576,0.80,0.90,0.231812,8.628,0.408,0.094491
+AGH,strong,80/20,skew,4,2000000,1048576,0.80,0.90,0.242884,8.234,0.389,0.094491
+AGH,strong,80/20,skew,8,2000000,1048576,0.80,0.90,0.279446,7.157,0.338,0.094491
+AGH,strong,80/20,skew,16,2000000,1048576,0.80,0.90,0.250819,7.974,0.377,0.094491
+AGH,strong,80/20,skew,1,2000000,1048576,0.80,0.99,0.373371,5.357,0.266,0.099483
+AGH,strong,80/20,skew,2,2000000,1048576,0.80,0.99,0.224928,8.892,0.442,0.099483
+AGH,strong,80/20,skew,4,2000000,1048576,0.80,0.99,0.240541,8.315,0.414,0.099483
+AGH,strong,80/20,skew,8,2000000,1048576,0.80,0.99,0.278735,7.175,0.357,0.099483
+AGH,strong,80/20,skew,16,2000000,1048576,0.80,0.99,0.253428,7.892,0.393,0.099483
+AGH,strong,50/50,uniform,1,2000000,16384,0.50,0.00,3.322613,0.602,0.745,2.474533
+AGH,strong,50/50,uniform,2,2000000,16384,0.50,0.00,2.178905,0.918,1.136,2.474533
+AGH,strong,50/50,uniform,4,2000000,16384,0.50,0.00,1.217205,1.643,2.033,2.474533
+AGH,strong,50/50,uniform,8,2000000,16384,0.50,0.00,0.702814,2.846,3.521,2.474533
+AGH,strong,50/50,uniform,16,2000000,16384,0.50,0.00,0.483969,4.132,5.113,2.474533
+AGH,strong,50/50,skew,1,2000000,16384,0.50,0.70,3.488361,0.573,0.761,2.655290
+AGH,strong,50/50,skew,2,2000000,16384,0.50,0.70,2.118427,0.944,1.253,2.655290
+AGH,strong,50/50,skew,4,2000000,16384,0.50,0.70,1.245937,1.605,2.131,2.655290
+AGH,strong,50/50,skew,8,2000000,16384,0.50,0.70,0.760103,2.631,3.493,2.655290
+AGH,strong,50/50,skew,16,2000000,16384,0.50,0.70,0.594197,3.366,4.469,2.655290
+AGH,strong,50/50,skew,1,2000000,16384,0.50,0.90,3.186821,0.628,0.829,2.640974
+AGH,strong,50/50,skew,2,2000000,16384,0.50,0.90,1.996944,1.002,1.323,2.640974
+AGH,strong,50/50,skew,4,2000000,16384,0.50,0.90,1.190733,1.680,2.218,2.640974
+AGH,strong,50/50,skew,8,2000000,16384,0.50,0.90,0.740640,2.700,3.566,2.640974
+AGH,strong,50/50,skew,16,2000000,16384,0.50,0.90,0.612167,3.267,4.314,2.640974
+AGH,strong,50/50,skew,1,2000000,16384,0.50,0.99,3.072037,0.651,0.860,2.641696
+AGH,strong,50/50,skew,2,2000000,16384,0.50,0.99,1.881597,1.063,1.404,2.641696
+AGH,strong,50/50,skew,4,2000000,16384,0.50,0.99,1.169610,1.710,2.259,2.641696
+AGH,strong,50/50,skew,8,2000000,16384,0.50,0.99,0.747053,2.677,3.536,2.641696
+AGH,strong,50/50,skew,16,2000000,16384,0.50,0.99,0.607658,3.291,4.347,2.641696
+AGH,strong,50/50,uniform,1,2000000,65536,0.50,0.00,0.918477,2.178,0.494,0.454128
+AGH,strong,50/50,uniform,2,2000000,65536,0.50,0.00,0.691923,2.890,0.656,0.454128
+AGH,strong,50/50,uniform,4,2000000,65536,0.50,0.00,0.375047,5.333,1.211,0.454128
+AGH,strong,50/50,uniform,8,2000000,65536,0.50,0.00,0.244821,8.169,1.855,0.454128
+AGH,strong,50/50,uniform,16,2000000,65536,0.50,0.00,0.168729,11.853,2.691,0.454128
+AGH,strong,50/50,skew,1,2000000,65536,0.50,0.70,0.926733,2.158,0.560,0.518871
+AGH,strong,50/50,skew,2,2000000,65536,0.50,0.70,0.652253,3.066,0.796,0.518871
+AGH,strong,50/50,skew,4,2000000,65536,0.50,0.70,0.441458,4.530,1.175,0.518871
+AGH,strong,50/50,skew,8,2000000,65536,0.50,0.70,0.365327,5.475,1.420,0.518871
+AGH,strong,50/50,skew,16,2000000,65536,0.50,0.70,0.364781,5.483,1.422,0.518871
+AGH,strong,50/50,skew,1,2000000,65536,0.50,0.90,0.847062,2.361,0.614,0.520036
+AGH,strong,50/50,skew,2,2000000,65536,0.50,0.90,0.623014,3.210,0.835,0.520036
+AGH,strong,50/50,skew,4,2000000,65536,0.50,0.90,0.426514,4.689,1.219,0.520036
+AGH,strong,50/50,skew,8,2000000,65536,0.50,0.90,0.365708,5.469,1.422,0.520036
+AGH,strong,50/50,skew,16,2000000,65536,0.50,0.90,0.358106,5.585,1.452,0.520036
+AGH,strong,50/50,skew,1,2000000,65536,0.50,0.99,0.804649,2.486,0.641,0.515825
+AGH,strong,50/50,skew,2,2000000,65536,0.50,0.99,0.601885,3.323,0.857,0.515825
+AGH,strong,50/50,skew,4,2000000,65536,0.50,0.99,0.443124,4.513,1.164,0.515825
+AGH,strong,50/50,skew,8,2000000,65536,0.50,0.99,0.366781,5.453,1.406,0.515825
+AGH,strong,50/50,skew,16,2000000,65536,0.50,0.99,0.356559,5.609,1.447,0.515825
+AGH,strong,50/50,uniform,1,2000000,262144,0.50,0.00,0.366834,5.452,0.410,0.150513
+AGH,strong,50/50,uniform,2,2000000,262144,0.50,0.00,0.330905,6.044,0.455,0.150513
+AGH,strong,50/50,uniform,4,2000000,262144,0.50,0.00,0.218259,9.163,0.690,0.150513
+AGH,strong,50/50,uniform,8,2000000,262144,0.50,0.00,0.131400,15.221,1.145,0.150513
+AGH,strong,50/50,uniform,16,2000000,262144,0.50,0.00,0.108784,18.385,1.384,0.150513
+AGH,strong,50/50,skew,1,2000000,262144,0.50,0.70,0.484346,4.129,0.439,0.212825
+AGH,strong,50/50,skew,2,2000000,262144,0.50,0.70,0.350174,5.711,0.608,0.212825
+AGH,strong,50/50,skew,4,2000000,262144,0.50,0.70,0.313857,6.372,0.678,0.212825
+AGH,strong,50/50,skew,8,2000000,262144,0.50,0.70,0.324876,6.156,0.655,0.212825
+AGH,strong,50/50,skew,16,2000000,262144,0.50,0.70,0.326792,6.120,0.651,0.212825
+AGH,strong,50/50,skew,1,2000000,262144,0.50,0.90,0.445909,4.485,0.435,0.193773
+AGH,strong,50/50,skew,2,2000000,262144,0.50,0.90,0.330866,6.045,0.586,0.193773
+AGH,strong,50/50,skew,4,2000000,262144,0.50,0.90,0.303059,6.599,0.639,0.193773
+AGH,strong,50/50,skew,8,2000000,262144,0.50,0.90,0.326290,6.130,0.594,0.193773
+AGH,strong,50/50,skew,16,2000000,262144,0.50,0.90,0.314635,6.357,0.616,0.193773
+AGH,strong,50/50,skew,1,2000000,262144,0.50,0.99,0.426013,4.695,0.465,0.198126
+AGH,strong,50/50,skew,2,2000000,262144,0.50,0.99,0.324195,6.169,0.611,0.198126
+AGH,strong,50/50,skew,4,2000000,262144,0.50,0.99,0.299346,6.681,0.662,0.198126
+AGH,strong,50/50,skew,8,2000000,262144,0.50,0.99,0.327135,6.114,0.606,0.198126
+AGH,strong,50/50,skew,16,2000000,262144,0.50,0.99,0.313886,6.372,0.631,0.198126
+AGH,strong,50/50,uniform,1,2000000,1048576,0.50,0.00,0.350285,5.710,0.263,0.092008
+AGH,strong,50/50,uniform,2,2000000,1048576,0.50,0.00,0.277979,7.195,0.331,0.092008
+AGH,strong,50/50,uniform,4,2000000,1048576,0.50,0.00,0.160607,12.453,0.573,0.092008
+AGH,strong,50/50,uniform,8,2000000,1048576,0.50,0.00,0.103091,19.400,0.892,0.092008
+AGH,strong,50/50,uniform,16,2000000,1048576,0.50,0.00,0.106094,18.851,0.867,0.092008
+AGH,strong,50/50,skew,1,2000000,1048576,0.50,0.70,0.429561,4.656,0.310,0.133096
+AGH,strong,50/50,skew,2,2000000,1048576,0.50,0.70,0.286751,6.975,0.464,0.133096
+AGH,strong,50/50,skew,4,2000000,1048576,0.50,0.70,0.287623,6.954,0.463,0.133096
+AGH,strong,50/50,skew,8,2000000,1048576,0.50,0.70,0.319124,6.267,0.417,0.133096
+AGH,strong,50/50,skew,16,2000000,1048576,0.50,0.70,0.303774,6.584,0.438,0.133096
+AGH,strong,50/50,skew,1,2000000,1048576,0.50,0.90,0.412298,4.851,0.312,0.128766
+AGH,strong,50/50,skew,2,2000000,1048576,0.50,0.90,0.278386,7.184,0.463,0.128766
+AGH,strong,50/50,skew,4,2000000,1048576,0.50,0.90,0.286528,6.980,0.449,0.128766
+AGH,strong,50/50,skew,8,2000000,1048576,0.50,0.90,0.319748,6.255,0.403,0.128766
+AGH,strong,50/50,skew,16,2000000,1048576,0.50,0.90,0.299824,6.671,0.429,0.128766
+AGH,strong,50/50,skew,1,2000000,1048576,0.50,0.99,0.401980,4.975,0.315,0.126704
+AGH,strong,50/50,skew,2,2000000,1048576,0.50,0.99,0.274491,7.286,0.462,0.126704
+AGH,strong,50/50,skew,4,2000000,1048576,0.50,0.99,0.280713,7.125,0.451,0.126704
+AGH,strong,50/50,skew,8,2000000,1048576,0.50,0.99,0.319490,6.260,0.397,0.126704
+AGH,strong,50/50,skew,16,2000000,1048576,0.50,0.99,0.299982,6.667,0.422,0.126704
+AGH,weak,80/20,uniform,1,250000,16384,0.80,0.00,0.032935,7.591,0.349,0.011507
+AGH,weak,80/20,uniform,2,500000,16384,0.80,0.00,0.122737,4.074,0.338,0.041517
+AGH,weak,80/20,uniform,4,1000000,16384,0.80,0.00,0.255493,3.914,1.040,0.265825
+AGH,weak,80/20,uniform,8,2000000,16384,0.80,0.00,0.507662,3.940,2.461,1.249279
+AGH,weak,80/20,uniform,16,4000000,16384,0.80,0.00,1.429587,2.798,3.650,5.217908
+AGH,weak,80/20,skew,1,250000,16384,0.80,0.70,0.038571,6.482,0.441,0.016996
+AGH,weak,80/20,skew,2,500000,16384,0.80,0.70,0.102531,4.877,0.524,0.053749
+AGH,weak,80/20,skew,4,1000000,16384,0.80,0.70,0.246573,4.056,1.215,0.299653
+AGH,weak,80/20,skew,8,2000000,16384,0.80,0.70,0.580235,3.447,2.235,1.296847
+AGH,weak,80/20,skew,16,4000000,16384,0.80,0.70,1.589017,2.517,3.365,5.347107
+AGH,weak,80/20,skew,1,250000,16384,0.80,0.90,0.035822,6.979,0.457,0.016375
+AGH,weak,80/20,skew,2,500000,16384,0.80,0.90,0.088631,5.641,0.609,0.053936
+AGH,weak,80/20,skew,4,1000000,16384,0.80,0.90,0.219484,4.556,1.327,0.291294
+AGH,weak,80/20,skew,8,2000000,16384,0.80,0.90,0.571116,3.502,2.273,1.297945
+AGH,weak,80/20,skew,16,4000000,16384,0.80,0.90,1.579119,2.533,3.380,5.336954
+AGH,weak,80/20,skew,1,250000,16384,0.80,0.99,0.033849,7.386,0.490,0.016581
+AGH,weak,80/20,skew,2,500000,16384,0.80,0.99,0.081907,6.104,0.633,0.051847
+AGH,weak,80/20,skew,4,1000000,16384,0.80,0.99,0.209504,4.773,1.386,0.290457
+AGH,weak,80/20,skew,8,2000000,16384,0.80,0.99,0.565966,3.534,2.285,1.293070
+AGH,weak,80/20,skew,16,4000000,16384,0.80,0.99,1.548255,2.584,3.422,5.298306
+AGH,weak,80/20,uniform,1,250000,65536,0.80,0.00,0.025950,9.634,0.285,0.007407
+AGH,weak,80/20,uniform,2,500000,65536,0.80,0.00,0.061209,8.169,0.352,0.021562
+AGH,weak,80/20,uniform,4,1000000,65536,0.80,0.00,0.107713,9.284,0.722,0.077809
+AGH,weak,80/20,uniform,8,2000000,65536,0.80,0.00,0.187341,10.676,1.509,0.282639
+AGH,weak,80/20,uniform,16,4000000,65536,0.80,0.00,0.409598,9.766,3.097,1.268729
+AGH,weak,80/20,skew,1,250000,65536,0.80,0.70,0.033077,7.558,0.395,0.013053
+AGH,weak,80/20,skew,2,500000,65536,0.80,0.70,0.057809,8.649,0.576,0.033325
+AGH,weak,80/20,skew,4,1000000,65536,0.80,0.70,0.134146,7.455,0.760,0.101892
+AGH,weak,80/20,skew,8,2000000,65536,0.80,0.70,0.312310,6.404,1.073,0.335214
+AGH,weak,80/20,skew,16,4000000,65536,0.80,0.70,0.732722,5.459,1.874,1.372971
+AGH,weak,80/20,skew,1,250000,65536,0.80,0.90,0.031299,7.988,0.399,0.012487
+AGH,weak,80/20,skew,2,500000,65536,0.80,0.90,0.052475,9.528,0.612,0.032109
+AGH,weak,80/20,skew,4,1000000,65536,0.80,0.90,0.124132,8.056,0.804,0.099840
+AGH,weak,80/20,skew,8,2000000,65536,0.80,0.90,0.314436,6.361,1.080,0.339726
+AGH,weak,80/20,skew,16,4000000,65536,0.80,0.90,0.722787,5.534,1.920,1.387692
+AGH,weak,80/20,skew,1,250000,65536,0.80,0.99,0.030097,8.306,0.406,0.012229
+AGH,weak,80/20,skew,2,500000,65536,0.80,0.99,0.049957,10.009,0.628,0.031381
+AGH,weak,80/20,skew,4,1000000,65536,0.80,0.99,0.122241,8.181,0.811,0.099143
+AGH,weak,80/20,skew,8,2000000,65536,0.80,0.99,0.315437,6.340,1.076,0.339463
+AGH,weak,80/20,skew,16,4000000,65536,0.80,0.99,0.730426,5.476,1.897,1.385942
+AGH,weak,80/20,uniform,1,250000,262144,0.80,0.00,0.030597,8.171,0.208,0.006371
+AGH,weak,80/20,uniform,2,500000,262144,0.80,0.00,0.054175,9.229,0.255,0.013793
+AGH,weak,80/20,uniform,4,1000000,262144,0.80,0.00,0.074284,13.462,0.458,0.034027
+AGH,weak,80/20,uniform,8,2000000,262144,0.80,0.00,0.105896,18.887,0.939,0.099448
+AGH,weak,80/20,uniform,16,4000000,262144,0.80,0.00,0.181743,22.009,1.731,0.314654
+AGH,weak,80/20,skew,1,250000,262144,0.80,0.70,0.036504,6.849,0.327,0.011953
+AGH,weak,80/20,skew,2,500000,262144,0.80,0.70,0.051520,9.705,0.489,0.025209
+AGH,weak,80/20,skew,4,1000000,262144,0.80,0.70,0.121909,8.203,0.468,0.057081
+AGH,weak,80/20,skew,8,2000000,262144,0.80,0.70,0.279438,7.157,0.516,0.144132
+AGH,weak,80/20,skew,16,4000000,262144,0.80,0.70,0.552592,7.239,0.728,0.402295
+AGH,weak,80/20,skew,1,250000,262144,0.80,0.90,0.032986,7.579,0.344,0.011347
+AGH,weak,80/20,skew,2,500000,262144,0.80,0.90,0.047900,10.438,0.502,0.024051
+AGH,weak,80/20,skew,4,1000000,262144,0.80,0.90,0.117172,8.534,0.469,0.054916
+AGH,weak,80/20,skew,8,2000000,262144,0.80,0.90,0.278695,7.176,0.501,0.139676
+AGH,weak,80/20,skew,16,4000000,262144,0.80,0.90,0.551625,7.251,0.711,0.392322
+AGH,weak,80/20,skew,1,250000,262144,0.80,0.99,0.031354,7.974,0.356,0.011157
+AGH,weak,80/20,skew,2,500000,262144,0.80,0.99,0.046489,10.755,0.507,0.023551
+AGH,weak,80/20,skew,4,1000000,262144,0.80,0.99,0.115096,8.688,0.475,0.054697
+AGH,weak,80/20,skew,8,2000000,262144,0.80,0.99,0.279041,7.167,0.497,0.138702
+AGH,weak,80/20,skew,16,4000000,262144,0.80,0.99,0.551650,7.251,0.720,0.397099
+AGH,weak,80/20,uniform,1,250000,1048576,0.80,0.00,0.036201,6.906,0.178,0.006441
+AGH,weak,80/20,uniform,2,500000,1048576,0.80,0.00,0.060164,8.311,0.211,0.012682
+AGH,weak,80/20,uniform,4,1000000,1048576,0.80,0.00,0.070464,14.192,0.362,0.025498
+AGH,weak,80/20,uniform,8,2000000,1048576,0.80,0.00,0.074231,26.943,0.742,0.055062
+AGH,weak,80/20,uniform,16,4000000,1048576,0.80,0.00,0.107909,37.068,1.416,0.152793
+AGH,weak,80/20,skew,1,250000,1048576,0.80,0.70,0.041010,6.096,0.290,0.011906
+AGH,weak,80/20,skew,2,500000,1048576,0.80,0.70,0.053872,9.281,0.440,0.023728
+AGH,weak,80/20,skew,4,1000000,1048576,0.80,0.70,0.120579,8.293,0.394,0.047483
+AGH,weak,80/20,skew,8,2000000,1048576,0.80,0.70,0.274450,7.287,0.367,0.100680
+AGH,weak,80/20,skew,16,4000000,1048576,0.80,0.70,0.526345,7.600,0.433,0.227900
+AGH,weak,80/20,skew,1,250000,1048576,0.80,0.90,0.037320,6.699,0.304,0.011356
+AGH,weak,80/20,skew,2,500000,1048576,0.80,0.90,0.049524,10.096,0.457,0.022613
+AGH,weak,80/20,skew,4,1000000,1048576,0.80,0.90,0.116370,8.593,0.390,0.045398
+AGH,weak,80/20,skew,8,2000000,1048576,0.80,0.90,0.274527,7.285,0.350,0.096181
+AGH,weak,80/20,skew,16,4000000,1048576,0.80,0.90,0.523061,7.647,0.446,0.233165
+AGH,weak,80/20,skew,1,250000,1048576,0.80,0.99,0.035314,7.079,0.316,0.011144
+AGH,weak,80/20,skew,2,500000,1048576,0.80,0.99,0.047289,10.573,0.468,0.022135
+AGH,weak,80/20,skew,4,1000000,1048576,0.80,0.99,0.115368,8.668,0.387,0.044631
+AGH,weak,80/20,skew,8,2000000,1048576,0.80,0.99,0.276278,7.239,0.342,0.094367
+AGH,weak,80/20,skew,16,4000000,1048576,0.80,0.99,0.523419,7.642,0.437,0.228908
+AGH,weak,50/50,uniform,1,250000,16384,0.50,0.00,0.042978,5.817,0.460,0.019787
+AGH,weak,50/50,uniform,2,500000,16384,0.50,0.00,0.161711,3.092,0.586,0.094843
+AGH,weak,50/50,uniform,4,1000000,16384,0.50,0.00,0.356337,2.806,1.648,0.587067
+AGH,weak,50/50,uniform,8,2000000,16384,0.50,0.00,0.754679,2.650,3.326,2.510333
+AGH,weak,50/50,uniform,16,4000000,16384,0.50,0.00,1.985050,2.015,5.543,11.002523
+AGH,weak,50/50,skew,1,250000,16384,0.50,0.70,0.051304,4.873,0.546,0.027995
+AGH,weak,50/50,skew,2,500000,16384,0.50,0.70,0.154449,3.237,0.760,0.117444
+AGH,weak,50/50,skew,4,1000000,16384,0.50,0.70,0.389075,2.570,1.483,0.577154
+AGH,weak,50/50,skew,8,2000000,16384,0.50,0.70,0.808514,2.474,3.196,2.584003
+AGH,weak,50/50,skew,16,4000000,16384,0.50,0.70,2.090982,1.913,5.313,11.110394
+AGH,weak,50/50,skew,1,250000,16384,0.50,0.90,0.044901,5.568,0.566,0.025433
+AGH,weak,50/50,skew,2,500000,16384,0.50,0.90,0.142632,3.506,0.752,0.107256
+AGH,weak,50/50,skew,4,1000000,16384,0.50,0.90,0.336890,2.968,1.700,0.572875
+AGH,weak,50/50,skew,8,2000000,16384,0.50,0.90,0.796063,2.512,3.274,2.606532
+AGH,weak,50/50,skew,16,4000000,16384,0.50,0.90,2.081434,1.922,5.363,11.163632
+AGH,weak,50/50,skew,1,250000,16384,0.50,0.99,0.044198,5.656,0.579,0.025609
+AGH,weak,50/50,skew,2,500000,16384,0.50,0.99,0.137562,3.635,0.771,0.106116
+AGH,weak,50/50,skew,4,1000000,16384,0.50,0.99,0.329585,3.034,1.733,0.571196
+AGH,weak,50/50,skew,8,2000000,16384,0.50,0.99,0.787443,2.540,3.310,2.606221
+AGH,weak,50/50,skew,16,4000000,16384,0.50,0.99,2.065884,1.936,5.386,11.126865
+AGH,weak,50/50,uniform,1,250000,65536,0.50,0.00,0.030881,8.095,0.414,0.012796
+AGH,weak,50/50,uniform,2,500000,65536,0.50,0.00,0.073057,6.844,0.508,0.037143
+AGH,weak,50/50,uniform,4,1000000,65536,0.50,0.00,0.148086,6.753,0.831,0.123040
+AGH,weak,50/50,uniform,8,2000000,65536,0.50,0.00,0.254025,7.873,1.871,0.475284
+AGH,weak,50/50,uniform,16,4000000,65536,0.50,0.00,0.553007,7.233,4.367,2.414870
+AGH,weak,50/50,skew,1,250000,65536,0.50,0.70,0.037707,6.630,0.491,0.018502
+AGH,weak,50/50,skew,2,500000,65536,0.50,0.70,0.071003,7.042,0.712,0.050554
+AGH,weak,50/50,skew,4,1000000,65536,0.50,0.70,0.169290,5.907,0.902,0.152637
+AGH,weak,50/50,skew,8,2000000,65536,0.50,0.70,0.373122,5.360,1.467,0.547211
+AGH,weak,50/50,skew,16,4000000,65536,0.50,0.70,0.885430,4.518,2.862,2.534360
+AGH,weak,50/50,skew,1,250000,65536,0.50,0.90,0.035985,6.947,0.500,0.017997
+AGH,weak,50/50,skew,2,500000,65536,0.50,0.90,0.068225,7.329,0.726,0.049516
+AGH,weak,50/50,skew,4,1000000,65536,0.50,0.90,0.168891,5.921,0.895,0.151240
+AGH,weak,50/50,skew,8,2000000,65536,0.50,0.90,0.377088,5.304,1.432,0.540070
+AGH,weak,50/50,skew,16,4000000,65536,0.50,0.90,0.887083,4.509,2.852,2.529584
+AGH,weak,50/50,skew,1,250000,65536,0.50,0.99,0.034382,7.271,0.511,0.017579
+AGH,weak,50/50,skew,2,500000,65536,0.50,0.99,0.065673,7.614,0.745,0.048921
+AGH,weak,50/50,skew,4,1000000,65536,0.50,0.99,0.158625,6.304,0.930,0.147598
+AGH,weak,50/50,skew,8,2000000,65536,0.50,0.99,0.378587,5.283,1.426,0.539908
+AGH,weak,50/50,skew,16,4000000,65536,0.50,0.99,0.887752,4.506,2.848,2.528672
+AGH,weak,50/50,uniform,1,250000,262144,0.50,0.00,0.035573,7.028,0.299,0.010634
+AGH,weak,50/50,uniform,2,500000,262144,0.50,0.00,0.061870,8.082,0.360,0.022242
+AGH,weak,50/50,uniform,4,1000000,262144,0.50,0.00,0.083951,11.912,0.653,0.054829
+AGH,weak,50/50,uniform,8,2000000,262144,0.50,0.00,0.134284,14.894,1.173,0.157579
+AGH,weak,50/50,uniform,16,4000000,262144,0.50,0.00,0.236542,16.910,2.197,0.519677
+AGH,weak,50/50,skew,1,250000,262144,0.50,0.70,0.041603,6.009,0.387,0.016081
+AGH,weak,50/50,skew,2,500000,262144,0.50,0.70,0.062966,7.941,0.528,0.033234
+AGH,weak,50/50,skew,4,1000000,262144,0.50,0.70,0.144091,6.940,0.543,0.078243
+AGH,weak,50/50,skew,8,2000000,262144,0.50,0.70,0.329540,6.069,0.656,0.216343
+AGH,weak,50/50,skew,16,4000000,262144,0.50,0.70,0.663755,6.026,0.926,0.614644
+AGH,weak,50/50,skew,1,250000,262144,0.50,0.90,0.038872,6.431,0.399,0.015492
+AGH,weak,50/50,skew,2,500000,262144,0.50,0.90,0.060187,8.307,0.531,0.031989
+AGH,weak,50/50,skew,4,1000000,262144,0.50,0.90,0.139672,7.160,0.535,0.074728
+AGH,weak,50/50,skew,8,2000000,262144,0.50,0.90,0.327856,6.100,0.634,0.207930
+AGH,weak,50/50,skew,16,4000000,262144,0.50,0.90,0.657142,6.087,0.943,0.619603
+AGH,weak,50/50,skew,1,250000,262144,0.50,0.99,0.037830,6.608,0.407,0.015398
+AGH,weak,50/50,skew,2,500000,262144,0.50,0.99,0.059305,8.431,0.530,0.031426
+AGH,weak,50/50,skew,4,1000000,262144,0.50,0.99,0.139071,7.191,0.530,0.073656
+AGH,weak,50/50,skew,8,2000000,262144,0.50,0.99,0.327051,6.115,0.632,0.206617
+AGH,weak,50/50,skew,16,4000000,262144,0.50,0.99,0.655939,6.098,0.944,0.618975
+AGH,weak,50/50,uniform,1,250000,1048576,0.50,0.00,0.040680,6.146,0.263,0.010701
+AGH,weak,50/50,uniform,2,500000,1048576,0.50,0.00,0.064500,7.752,0.332,0.021445
+AGH,weak,50/50,uniform,4,1000000,1048576,0.50,0.00,0.076972,12.992,0.549,0.042280
+AGH,weak,50/50,uniform,8,2000000,1048576,0.50,0.00,0.106862,18.716,0.829,0.088596
+AGH,weak,50/50,uniform,16,4000000,1048576,0.50,0.00,0.215229,18.585,1.180,0.254054
+AGH,weak,50/50,skew,1,250000,1048576,0.50,0.70,0.046265,5.404,0.347,0.016031
+AGH,weak,50/50,skew,2,500000,1048576,0.50,0.70,0.061156,8.176,0.522,0.031910
+AGH,weak,50/50,skew,4,1000000,1048576,0.50,0.70,0.138143,7.239,0.464,0.064079
+AGH,weak,50/50,skew,8,2000000,1048576,0.50,0.70,0.318267,6.284,0.431,0.137161
+AGH,weak,50/50,skew,16,4000000,1048576,0.50,0.70,0.621574,6.435,0.553,0.343908
+AGH,weak,50/50,skew,1,250000,1048576,0.50,0.90,0.043938,5.690,0.353,0.015524
+AGH,weak,50/50,skew,2,500000,1048576,0.50,0.90,0.058759,8.509,0.520,0.030573
+AGH,weak,50/50,skew,4,1000000,1048576,0.50,0.90,0.135979,7.354,0.455,0.061842
+AGH,weak,50/50,skew,8,2000000,1048576,0.50,0.90,0.320655,6.237,0.411,0.131681
+AGH,weak,50/50,skew,16,4000000,1048576,0.50,0.90,0.616636,6.487,0.538,0.331797
+AGH,weak,50/50,skew,1,250000,1048576,0.50,0.99,0.042752,5.848,0.355,0.015166
+AGH,weak,50/50,skew,2,500000,1048576,0.50,0.99,0.057688,8.667,0.522,0.030141
+AGH,weak,50/50,skew,4,1000000,1048576,0.50,0.99,0.134063,7.459,0.464,0.062222
+AGH,weak,50/50,skew,8,2000000,1048576,0.50,0.99,0.321089,6.229,0.407,0.130692
+AGH,weak,50/50,skew,16,4000000,1048576,0.50,0.99,0.612768,6.528,0.535,0.327676
+CSV_RESULTS_END

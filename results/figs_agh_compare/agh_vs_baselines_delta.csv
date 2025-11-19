@@ -1,0 +1,5 @@
+slice,cmp,delta_pct,agh,base
+skew_midB,AGH vs Segment,16.779902038236692,7.391,6.329
+skew_midB,AGH vs Fine,0.5578231292517057,7.391,7.35
+uniform_highB,AGH vs Segment,49.70200752823086,19.09,12.752
+uniform_highB,AGH vs Fine,-5.443558373371639,19.09,20.189

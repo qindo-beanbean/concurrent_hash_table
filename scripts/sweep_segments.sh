@@ -17,7 +17,7 @@ set -euo pipefail
 #   # outputs results/segments/summary.csv and prints best S
 
 S_LIST=("16" "32" "64" "128" "256" "512")
-OUTDIR="results/segments"
+OUTDIR="../results/segments"
 mkdir -p "${OUTDIR}"
 
 export OMP_PROC_BIND=close
@@ -30,7 +30,7 @@ for S in "${S_LIST[@]}"; do
   CSV="${OUTDIR}/segment_S${S}.csv"
 
   echo "[build] SB_DEFAULT_SEGMENTS=${S}"
-  g++ -std=c++17 -O3 -fopenmp -DSB_DEFAULT_SEGMENTS=${S} bench_matrix_simple.cpp -o "${BIN}"
+  g++ -std=c++17 -O3 -fopenmp -DSB_DEFAULT_SEGMENTS=${S} ../bench_matrix_simple.cpp -o "${BIN}"
 
   echo "[run]   ${BIN} --impl=segment"
   "./${BIN}" --impl=segment | tee "${LOG}" >/dev/null
