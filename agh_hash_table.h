@@ -23,16 +23,16 @@
 #  ifdef SB_DEFAULT_SEGMENTS
 #    define AGH_DEFAULT_SEGMENTS SB_DEFAULT_SEGMENTS
 #  else
-#    define AGH_DEFAULT_SEGMENTS 128
+#    define AGH_DEFAULT_SEGMENTS 512
 #  endif
 #endif
 
 #ifndef AGH_MAX_STRIPES
-#define AGH_MAX_STRIPES 32
+#define AGH_MAX_STRIPES 16
 #endif
 
 #ifndef AGH_STRIPE_FACTOR
-#define AGH_STRIPE_FACTOR 2
+#define AGH_STRIPE_FACTOR 3
 #endif
 
 template<typename K, typename V>
